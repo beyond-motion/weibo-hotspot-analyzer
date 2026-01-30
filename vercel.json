@@ -1,17 +1,15 @@
 {
-  "buildCommand": "echo 'No build needed - using GitHub Actions generated reports'",
-  "outputDirectory": "reports",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
     {
       "source": "/",
-      "destination": "/2026/01/latest_weibo_hotspot_report.html"
+      "destination": "/reports/2026/01/latest_weibo_hotspot_report.html"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)\.html",
+      "source": "/reports/(.*)\\.html",
       "headers": [
         {
           "key": "Cache-Control",
