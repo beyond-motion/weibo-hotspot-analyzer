@@ -1,38 +1,4 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/reports/2026/01/latest_weibo_hotspot_report.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/reports/(.*)\\.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=1800, must-revalidate"
-        },
-        {
-          "key": "Content-Type",
-          "value": "text/html; charset=utf-8"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        }
-      ]
-    }
-  ]
+  "trailingSlash": false
 }
