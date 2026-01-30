@@ -44,6 +44,10 @@ weibo_hotspot_report_*.html
 *.temp
 .latest_ideas
 
+# 环境变量文件
+.env
+.env.local
+
 # 测试文件
 test_*.py
 *_test.py

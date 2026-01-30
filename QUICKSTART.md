@@ -33,8 +33,11 @@ bash migrate_to_github.sh
 
 ```
 名称: TIANAPI_KEY
-值: d67242c73185cde1f94039cb55e4a3ee
+值: <你的天聚数行 API 密钥>
 ```
+
+⚠️ **安全提示**：使用你自己的 API 密钥，不要使用示例中的密钥。
+获取地址：https://www.tianapi.com/
 
 #### Secret 2: ANTHROPIC_API_KEY
 

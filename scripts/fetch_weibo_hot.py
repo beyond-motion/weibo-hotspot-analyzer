@@ -209,8 +209,8 @@ def main():
     print("微博热搜数据抓取器")
     print("=" * 60)
 
-    # 从环境变量读取 API 密钥，如果未设置则使用默认值
-    API_KEY = os.environ.get('TIANAPI_KEY', 'd67242c73185cde1f94039cb55e4a3ee')
+    # 从环境变量读取 API 密钥
+    API_KEY = os.environ.get('TIANAPI_KEY')
 
     if not API_KEY:
         print("\n❌ 错误: 未设置 TIANAPI_KEY 环境变量")

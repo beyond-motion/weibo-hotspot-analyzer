@@ -68,7 +68,7 @@
 
 | Secret 名称 | 说明 | 示例值 | 来源 |
 |------------|------|--------|------|
-| `TIANAPI_KEY` | 天聚数行 API 密钥 | `d67242c73185cde1f94039cb55e4a3ee` | [tianapi.com](https://www.tianapi.com/) |
+| `TIANAPI_KEY` | 天聚数行 API 密钥 | `<your_tianapi_key>` | [tianapi.com](https://www.tianapi.com/) |
 | `ANTHROPIC_API_KEY` | Claude API 密钥 | `sk-ant-xxxxxx...` | [console.anthropic.com](https://console.anthropic.com/) |
 
 ### 可选的 Secrets

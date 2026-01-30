@@ -91,11 +91,39 @@
 
 ### API密钥配置
 
-当前使用天聚数行API（已内置密钥），如需更换：
+⚠️ **安全注意**：为了保护您的 API 密钥安全，请使用环境变量配置。
 
-1. 打开 `scripts/fetch_weibo_hot.py`
-2. 修改 `API_KEY` 变量为你的密钥
-3. 免费账户每日限额100次调用
+#### 本地开发
+
+1. 复制环境变量模板：
+   ```bash
+   cp .env.example .env
+   ```
+
+2. 编辑 `.env` 文件，填入你的 API 密钥：
+   ```bash
+   TIANAPI_KEY=your_tianapi_key_here
+   API_ENDPOINT=https://your-api-endpoint.com/v1/chat/completions
+   API_KEY=your_api_key_here
+   ```
+
+3. 运行脚本时，它会自动从环境变量读取 API 密钥
+
+#### GitHub Actions
+
+在 GitHub 仓库设置中配置 Secrets：
+1. Settings → Secrets and variables → Actions
+2. 添加以下 Secrets：
+   - `TIANAPI_KEY`: 天聚数行 API 密钥
+   - `API_ENDPOINT`: Claude API 端点
+   - `API_KEY`: Claude API 密钥
+
+🔒 **重要**：绝不要将 API 密钥硬编码到代码中，否则会导致密钥泄露。
+
+#### API 资源
+
+- 天聚数行 API: https://www.tianapi.com/
+- 免费账户每日限额 100 次调用
 
 ### 抓取频率建议
 

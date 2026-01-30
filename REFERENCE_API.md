@@ -26,7 +26,7 @@
 
 **请求示例**：
 ```
-https://apis.tianapi.com/weibohot/index?key=d67242c73185cde1f94039cb55e4a3ee
+https://apis.tianapi.com/weibohot/index?key=<your_api_key>
 ```
 
 ### 返回参数

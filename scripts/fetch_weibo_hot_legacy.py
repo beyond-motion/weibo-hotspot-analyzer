@@ -192,8 +192,13 @@ class WeiboHotspotFetcher:
 
 def main():
     """主函数"""
-    # API密钥（建议从环境变量或配置文件读取）
-    API_KEY = "d67242c73185cde1f94039cb55e4a3ee"
+    # 从环境变量读取 API 密钥
+    API_KEY = os.environ.get('TIANAPI_KEY')
+
+    if not API_KEY:
+        print("❌ 错误: 未设置 TIANAPI_KEY 环境变量")
+        print("请设置环境变量: export TIANAPI_KEY='your-api-key'")
+        sys.exit(1)
 
     # 创建获取器实例
     fetcher = WeiboHotspotFetcher(API_KEY)
