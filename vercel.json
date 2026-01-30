@@ -1,22 +1,38 @@
 {
-  "buildCommand": "echo 'No build needed'",
+  "buildCommand": "echo 'No build needed - using GitHub Actions generated reports'",
   "outputDirectory": "reports",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
+  "rewrites": [
     {
       "source": "/",
-      "destination": "/latest_weibo_hotspot_report.html",
-      "permanent": false
+      "destination": "/2026/01/latest_weibo_hotspot_report.html"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/(.*)\.html",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600, must-revalidate"
+          "value": "public, max-age=1800, must-revalidate"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
         }
       ]
     }
