@@ -25,6 +25,7 @@ import json
 import os
 import sys
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from typing import Dict, List
 
 
@@ -103,7 +104,7 @@ class HTMLReportGenerator:
 
     def _generate_html_header(self) -> str:
         """生成 HTML 头部"""
-        generate_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        generate_time = datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S')
 
         return f'''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -646,13 +647,13 @@ class HTMLReportGenerator:
         return '''
         <footer class="footer">
             <p>🤖 本报告由 AI 自动生成 | 仅供参考</p>
-            <p>数据来源：天聚数行 API | AI 分析：Claude 3.5 Sonnet</p>
+            <p>数据来源：天聚数行 API | AI 分析：Claude 4.5 Sonnet</p>
             <p>生成时间：{generate_time}</p>
         </footer>
     </div>
 </body>
 </html>
-'''.format(generate_time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+'''.format(generate_time=datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y-%m-%d %H:%M:%S'))
 
     def save_to_file(self, html_content: str, filename: str = None):
         """保存 HTML 到文件"""
