@@ -233,6 +233,14 @@ class HTMLReportGenerator:
             color: #666;
         }}
 
+        .hotspot-summary {{
+            margin-top: 8px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+            font-style: italic;
+        }}
+
         .tag {{
             background: var(--primary-color);
             color: white;
@@ -495,8 +503,10 @@ class HTMLReportGenerator:
             hotspot_info = self.get_hotspot_info(hotword)
             tag = hotspot_info.get('hot_tag', '')
             hotness = hotspot_info.get('hotword_num', idea.get('hotness', ''))
+            summary = idea.get('hotspot_summary', '')  # 获取热搜描述
 
             tag_html = f'<span class="tag">{tag}</span>' if tag else ''
+            summary_html = f'<div class="hotspot-summary">{summary}</div>' if summary else ''
 
             html += f'''
             <div class="hotspot-card">
@@ -505,6 +515,7 @@ class HTMLReportGenerator:
                     <span class="hotword">{hotword}</span>
                 </div>
                 <div class="hotness">热度：{hotness} {tag_html}</div>
+                {summary_html}
             </div>
 '''
 

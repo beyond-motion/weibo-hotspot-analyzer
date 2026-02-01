@@ -116,18 +116,24 @@ class HotspotAnalyzer:
 
         prompt = f"""你是一位资深产品经理，擅长发现热点背后的产品机会。
 
-请基于以下微博热搜话题，生成 3 个产品创意。
+请基于以下微博热搜话题，生成 3 个产品创意，并简要说明这个热搜的内容。
 
 ## 热搜信息
 - **话题**: {hotword}
 - **热度指数**: {hotness:,}
 
-## 评分标准
+## 任务要求
+
+### 1. 热搜说明（必需）
+请用1-2句话（30字以内）解释这个热搜的具体内容或事件背景。
+
+### 2. 产品创意（3个）
+
+**评分标准**：
 1. **有趣度 (80%权重)**: 创意新颖性、话题热度、用户参与度、传播潜力
 2. **有用度 (20%权重)**: 实用价值、需求强度、市场痛点解决程度
 
-## 输出要求
-为每个创意提供以下信息：
+**每个创意需包含**：
 1. **产品名称**: 简洁易记，体现热点元素 (2-8个字)
 2. **综合评分**: 0-100分 (有趣度×0.8 + 有用度×0.2)
 3. **有趣度评分**: 0-100分
@@ -141,6 +147,7 @@ class HotspotAnalyzer:
 
 ```json
 {{
+  "hotspot_summary": "用1-2句话说明这个热搜的具体内容",
   "ideas": [
     {{
       "name": "产品名称",
@@ -229,7 +236,7 @@ class HotspotAnalyzer:
         except Exception as e:
             raise Exception(f"API 调用失败: {str(e)}")
 
-    def analyze_hotspot(self, hotspot: Dict) -> List[Dict]:
+    def analyze_hotspot(self, hotspot: Dict) -> tuple:
         """
         分析单个热搜并生成创意
 
@@ -237,7 +244,7 @@ class HotspotAnalyzer:
             hotspot: 热搜数据字典
 
         Returns:
-            产品创意列表
+            (hotspot_summary, ideas)：热搜描述和产品创意列表
         """
         hotword = hotspot['hotword']
         hotness = hotspot['hotword_num_int']
@@ -252,20 +259,21 @@ class HotspotAnalyzer:
             content = self.call_api(prompt)
 
             # 解析响应
-            ideas = self.parse_response(content)
+            hotspot_summary, ideas = self.parse_response(content)
 
             # 为每个创意添加热搜关联信息
             for idea in ideas:
                 idea['hotword'] = hotword
                 idea['hotness'] = hotness
                 idea['rank'] = rank
+                idea['hotspot_summary'] = hotspot_summary  # 添加热搜描述
 
-            return ideas
+            return hotspot_summary, ideas
 
         except Exception as e:
             print(f"  ❌ 分析失败: {str(e)}")
             # 返回一个失败占位符
-            return [{
+            return "", [{
                 "hotword": hotword,
                 "hotness": hotness,
                 "rank": rank,
@@ -275,10 +283,11 @@ class HotspotAnalyzer:
                 "use_score": 0,
                 "features": [f"错误: {str(e)}"],
                 "target_users": "无法生成",
-                "description": f"API 调用失败: {str(e)}"
+                "description": f"API 调用失败: {str(e)}",
+                "hotspot_summary": ""
             }]
 
-    def parse_response(self, content: str) -> List[Dict]:
+    def parse_response(self, content: str) -> tuple:
         """
         解析 API 响应，提取 JSON 数据
 
@@ -286,7 +295,7 @@ class HotspotAnalyzer:
             content: API 返回的文本内容
 
         Returns:
-            创意列表
+            (hotspot_summary, ideas)：热搜描述和创意列表
 
         Raises:
             ValueError: 无法解析 JSON
@@ -294,7 +303,7 @@ class HotspotAnalyzer:
         # 尝试直接解析
         try:
             data = json.loads(content)
-            return data.get('ideas', [])
+            return data.get('hotspot_summary', ''), data.get('ideas', [])
         except json.JSONDecodeError:
             pass
 
@@ -309,7 +318,7 @@ class HotspotAnalyzer:
             try:
                 json_str = json_match.group(1) if json_match.lastindex else json_match.group(0)
                 data = json.loads(json_str)
-                return data.get('ideas', [])
+                return data.get('hotspot_summary', ''), data.get('ideas', [])
             except json.JSONDecodeError as e:
                 raise ValueError(f"无法解析 API 返回的 JSON: {str(e)}")
 
@@ -335,10 +344,12 @@ class HotspotAnalyzer:
             hotword = hotspot['hotword']
             print(f"\n[{idx}/{total}] 分析: {hotword}")
 
-            ideas = self.analyze_hotspot(hotspot)
+            hotspot_summary, ideas = self.analyze_hotspot(hotspot)
 
             if ideas and ideas[0]['score'] > 0:
                 print(f"  ✅ 成功生成 {len(ideas)} 个创意")
+                if hotspot_summary:
+                    print(f"  📝 热搜说明: {hotspot_summary}")
                 for idea in ideas:
                     print(f"     - {idea['name']} ({idea['score']}分)")
             else:
