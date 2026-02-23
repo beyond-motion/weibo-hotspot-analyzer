@@ -26,7 +26,7 @@ print(f"[信息] 使用数据文件: {latest_json}")
 with open(latest_json, 'r', encoding='utf-8') as f:
     hotspot_data = json.load(f)
 
-hotspots = hotspot_data['data']  # 分析全部热搜
+hotspots = hotspot_data['data'][:10]  # 取TOP10
 
 # 为每个热搜生成产品创意
 def generate_ideas_for_hotspot(hotspot):
@@ -349,7 +349,7 @@ def generate_html():
             </div>
         </header>
 
-        <h2>📊 热搜概览</h2>
+        <h2>📊 热搜TOP10概览</h2>
         <div class="hotspot-list">
 '''
 
