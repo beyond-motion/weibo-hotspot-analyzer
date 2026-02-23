@@ -455,9 +455,22 @@ def generate_html():
 # 生成HTML
 html = generate_html()
 
-# 创建输出目录（使用绝对路径，指向vault根目录）
-vault_root = '/Users/wanglingwei/Movies/violinvault/SynologyDrive/Clipping'
-output_dir = f'{vault_root}/19-ClaudeCode/微博热搜/{current_year_month}'
+# 创建输出目录（兼容本地和 GitHub Actions 环境）
+import os
+import sys
+
+# 检测运行环境
+if os.path.exists('/home/runner'):
+    # GitHub Actions 环境
+    output_dir = f'reports/{current_year_month}'
+elif os.path.exists('/Users/wanglingwei/Movies/violinvault/SynologyDrive/Clipping'):
+    # 本地环境
+    vault_root = '/Users/wanglingwei/Movies/violinvault/SynologyDrive/Clipping'
+    output_dir = f'{vault_root}/19-ClaudeCode/微博热搜/{current_year_month}'
+else:
+    # 其他环境，使用当前目录
+    output_dir = f'reports/{current_year_month}'
+
 os.makedirs(output_dir, exist_ok=True)
 
 # 保存文件（使用当前日期）
