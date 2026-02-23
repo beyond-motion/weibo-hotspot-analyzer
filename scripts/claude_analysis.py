@@ -15,7 +15,7 @@ python claude_analysis_proxy.py
 环境变量：
 - API_ENDPOINT: API 端点 URL（必需）
 - API_KEY: API 密钥（必需）
-- API_MODEL: 模型名称（可选，默认：claude-sonnet-4-5）
+- API_MODEL: 模型名称（可选，默认：claude-sonnet-4-6）
 
 示例：
 export API_ENDPOINT="https://nwcvxulatwfv.sg-members-1.clawcloudrun.com/antigravity/v1/chat/completions"
@@ -42,7 +42,7 @@ import urllib.error
 class HotspotAnalyzer:
     """基于自定义 API 中转服务的微博热搜创意分析器"""
 
-    def __init__(self, endpoint: str, api_key: str, model: str = "claude-sonnet-4-5"):
+    def __init__(self, endpoint: str, api_key: str, model: str = "claude-sonnet-4-6"):
         """
         初始化分析器
 
@@ -431,7 +431,7 @@ def main():
         print("  API_KEY = your_api_key")
         sys.exit(1)
 
-    model = os.environ.get('API_MODEL', 'claude-sonnet-4-5')
+    model = os.environ.get('API_MODEL', 'claude-sonnet-4-6')
 
     try:
         # 创建分析器
