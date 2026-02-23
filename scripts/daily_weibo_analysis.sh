@@ -3,12 +3,22 @@
 # 执行时间：每天22:00
 
 # 设置脚本目录
-SCRIPT_DIR="/Users/wanglingwei/Movies/violinvault/SynologyDrive/Clipping/.claude/skills/weibo_hotspot_analyzer"
-VAULT_DIR="/Users/wanglingwei/Movies/violinvault/SynologyDrive/Clipping"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# 获取 vault 根目录（从 .claude/skills/weibo_hotspot_analyzer/scripts 向上三级）
+VAULT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+# 微博热搜报告输出到 19-ClaudeCode
+REPORT_DIR="$VAULT_ROOT/19-ClaudeCode/微博热搜"
+
+# 确保项目目录存在
+if [[ ! -d "$REPORT_DIR" ]]; then
+    echo "错误: 项目路径不存在: $REPORT_DIR"
+    echo "当前工作目录: $(pwd)"
+    exit 1
+fi
 
 # 日志文件
 LOG_FILE="${SCRIPT_DIR}/logs/daily_analysis_$(date +%Y%m%d).log"
-REPORT_DIR="${VAULT_DIR}/19-ClaudeCode/微博热搜"
 
 # 创建日志目录
 mkdir -p "${SCRIPT_DIR}/logs"
@@ -22,9 +32,9 @@ echo "========================================" >> "${LOG_FILE}"
 # 切换到脚本目录
 cd "${SCRIPT_DIR}" || exit 1
 
-# 步骤1: 抓取微博热搜
+# 步骤1：抓取微博热搜
 echo "[步骤1] 抓取微博热搜数据..." >> "${LOG_FILE}"
-source venv/bin/activate && python scripts/fetch_weibo_hot.py >> "${LOG_FILE}" 2>&1
+python3 scripts/fetch_weibo_hot.py >> "${LOG_FILE}" 2>&1
 
 if [ $? -ne 0 ]; then
     echo "[错误] 热搜抓取失败！" >> "${LOG_FILE}"
@@ -33,7 +43,7 @@ fi
 
 echo "[成功] 热搜数据抓取完成" >> "${LOG_FILE}"
 
-# 步骤2: 找到最新生成的JSON文件
+# 步骤2：找到最新生成的JSON文件
 LATEST_JSON=$(ls -t weibo_hotspots_*.json 2>/dev/null | head -1)
 
 if [ -z "$LATEST_JSON" ]; then
@@ -43,27 +53,20 @@ fi
 
 echo "[信息] 使用数据文件: ${LATEST_JSON}" >> "${LOG_FILE}"
 
-# 步骤3: 生成HTML报告
+# 步骤3：生成HTML报告
 echo "[步骤2] 生成HTML分析报告..." >> "${LOG_FILE}"
 
-# 修改generate_html_report.py中的JSON文件名为最新文件
-sed "s/weibo_hotspots_20260114_220449.json/${LATEST_JSON}/g" scripts/generate_html_report.py > scripts/generate_html_report_temp.py
-
-# 执行生成报告
-source venv/bin/activate && python scripts/generate_html_report_temp.py >> "${LOG_FILE}" 2>&1
+# 执行生成报告（脚本会自动查找最新的JSON文件）
+python3 scripts/generate_html_report.py >> "${LOG_FILE}" 2>&1
 
 if [ $? -ne 0 ]; then
     echo "[错误] 报告生成失败！" >> "${LOG_FILE}"
-    rm -f scripts/generate_html_report_temp.py
     exit 1
 fi
 
-# 清理临时文件
-rm -f scripts/generate_html_report_temp.py
-
 echo "[成功] HTML报告生成完成" >> "${LOG_FILE}"
 
-# 步骤4: 检查生成的报告
+# 步骤4：检查生成的报告
 LATEST_REPORT=$(ls -t "${REPORT_DIR}"/2026/*/weibo_hotspot_report_*.html "${REPORT_DIR}"/2026/*/*_weibo_hotspot_report.html 2>/dev/null | head -1)
 
 if [ -n "$LATEST_REPORT" ]; then
@@ -73,7 +76,7 @@ else
     echo "[警告] 未找到生成的报告文件" >> "${LOG_FILE}"
 fi
 
-# 步骤5: 清理7天前的JSON数据文件（可选）
+# 步骤5：清理7天前的JSON数据文件（可选）
 echo "[步骤3] 清理旧数据文件..." >> "${LOG_FILE}"
 find "${SCRIPT_DIR}" -name "weibo_hotspots_*.json" -mtime +7 -delete 2>/dev/null
 find "${SCRIPT_DIR}" -name "weibo_ideas_*.json" -mtime +7 -delete 2>/dev/null
