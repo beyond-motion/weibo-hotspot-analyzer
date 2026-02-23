@@ -220,20 +220,31 @@ class HotspotAnalyzer:
 
             with urllib.request.urlopen(req, timeout=120) as response:
                 response_data = response.read().decode('utf-8')
+                print(f"  🔍 API 响应 (前200字符): {response_data[:200]}")
+
+            try:
                 result = json.loads(response_data)
+            except json.JSONDecodeError as e:
+                print(f"  ❌ JSON 解析失败: {e}")
+                print(f"  📄 原始响应: {response_data[:500]}")
+                raise ValueError(f"API 返回的不是有效 JSON: {response_data[:200]}")
 
             # 解析 OpenAI 格式的响应
             if 'choices' in result and len(result['choices']) > 0:
                 return result['choices'][0]['message']['content']
             else:
+                print(f"  📄 API 返回结构: {list(result.keys()) if isinstance(result, dict) else type(result)}")
                 raise ValueError(f"API 响应格式错误: {result}")
 
         except urllib.error.HTTPError as e:
             error_body = e.read().decode('utf-8')
+            print(f"  ❌ HTTP 错误 {e.code}: {error_body[:200]}")
             raise Exception(f"API 调用失败 (HTTP {e.code}): {error_body}")
         except urllib.error.URLError as e:
+            print(f"  ❌ 网络错误: {str(e)}")
             raise Exception(f"网络错误: {str(e)}")
         except Exception as e:
+            print(f"  ❌ 未知错误: {str(e)}")
             raise Exception(f"API 调用失败: {str(e)}")
 
     def analyze_hotspot(self, hotspot: Dict) -> tuple:
