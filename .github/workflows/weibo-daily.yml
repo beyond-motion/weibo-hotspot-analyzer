@@ -49,25 +49,33 @@ jobs:
         run: |
           python scripts/generate_html_report.py
 
-      - name: 创建输出目录
+      - name: 验证报告已生成
         run: |
-          mkdir -p reports/$(date +%Y/%m)
-
-      - name: 移动报告到输出目录
-        run: |
-          REPORT_FILE=$(ls -t weibo_hotspot_report_*.html 2>/dev/null | head -1)
+          echo "🔍 查找生成的报告文件..."
+          find . -name "weibo_hotspot_report_*.html" -type f
+          REPORT_FILE=$(find . -name "weibo_hotspot_report_*.html" -type f | head -1)
           if [ -n "$REPORT_FILE" ]; then
-            # 使用时间戳避免覆盖：2026-01-18_220000
-            TIMESTAMP=$(date +%Y-%m-%d_%H%M%S)
-            cp "$REPORT_FILE" "reports/$(date +%Y/%m)/${TIMESTAMP}_weibo_hotspot_report.html"
-            echo "✅ 报告已复制到: reports/$(date +%Y/%m)/${TIMESTAMP}_weibo_hotspot_report.html"
-
-            # 同时创建一个 latest 副本（方便访问最新报告）
-            cp "$REPORT_FILE" "reports/$(date +%Y/%m)/latest_weibo_hotspot_report.html"
+            echo "✅ 找到报告: $REPORT_FILE"
+            cp "$REPORT_FILE" weibo_hotspot_report_latest.html
           else
             echo "❌ 未找到生成的报告文件"
             exit 1
           fi
+
+      - name: 移动报告到输出目录
+        run: |
+          REPORT_FILE="weibo_hotspot_report_latest.html"
+          TIMESTAMP=$(date +%Y-%m-%d_%H%M%S)
+          YEAR_MONTH=$(date +%Y/%m)
+
+          mkdir -p "reports/${YEAR_MONTH}"
+
+          cp "$REPORT_FILE" "reports/${YEAR_MONTH}/${TIMESTAMP}_weibo_hotspot_report.html"
+          echo "✅ 报告已复制到: reports/${YEAR_MONTH}/${TIMESTAMP}_weibo_hotspot_report.html"
+
+          # 创建 latest 副本
+          cp "$REPORT_FILE" "reports/${YEAR_MONTH}/latest_weibo_hotspot_report.html"
+          echo "✅ 已创建 latest 副本"
 
       - name: 更新首页重定向
         run: |
