@@ -52,13 +52,20 @@ jobs:
       - name: 验证报告已生成
         run: |
           echo "🔍 查找生成的报告文件..."
-          find . -name "weibo_hotspot_report_*.html" -type f
-          REPORT_FILE=$(find . -name "weibo_hotspot_report_*.html" -type f | head -1)
+          sync
+          ls -la reports/
+          find reports/ -name "*.html" -type f || find . -name "weibo_hotspot_report_*.html" -type f
+          REPORT_FILE=$(find reports/ -name "*.html" -type f 2>/dev/null | head -1)
+          if [ -z "$REPORT_FILE" ]; then
+            REPORT_FILE=$(find . -name "weibo_hotspot_report_*.html" -type f 2>/dev/null | head -1)
+          fi
           if [ -n "$REPORT_FILE" ]; then
             echo "✅ 找到报告: $REPORT_FILE"
             cp "$REPORT_FILE" weibo_hotspot_report_latest.html
           else
             echo "❌ 未找到生成的报告文件"
+            echo "当前目录内容:"
+            ls -la
             exit 1
           fi
 
