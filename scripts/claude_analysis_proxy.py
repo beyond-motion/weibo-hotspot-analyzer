@@ -42,7 +42,7 @@ import urllib.error
 class HotspotAnalyzer:
     """基于自定义 API 中转服务的微博热搜创意分析器"""
 
-    def __init__(self, endpoint: str, api_key: str, model: str = "claude-sonnet-4-5"):
+    def __init__(self, endpoint: str, api_key: str, model: str = "claude-sonnet-4-6"):
         """
         初始化分析器
 
@@ -420,7 +420,7 @@ def main():
         print("  API_KEY = your_api_key")
         sys.exit(1)
 
-    model = os.environ.get('API_MODEL', 'claude-sonnet-4-5')
+    model = os.environ.get('API_MODEL', 'claude-sonnet-4-6')
 
     try:
         # 创建分析器
