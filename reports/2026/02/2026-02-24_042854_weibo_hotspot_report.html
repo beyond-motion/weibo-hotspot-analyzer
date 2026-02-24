@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博热搜产品创意分析报告 - 2026年01月24日</title>
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #FF8C42;
+            --accent-excellent: #FFD23F;
+            --accent-good: #06A77D;
+            --accent-normal: #6C757D;
+            --bg-color: #FFF8F0;
+            --text-color: #2D3142;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .report-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+
+        .report-header h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .meta-info span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            margin-top: 32px;
+        }
+
+        .hotspot-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .hotspot-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hotspot-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .hotspot-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .rank {
+            background: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .hotword {
+            font-weight: 600;
+            font-size: 16px;
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .hotness {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .hotspot-detail {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+        }
+
+        .hotspot-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .idea-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border-left: 5px solid #E0E0E0;
+            transition: all 0.2s;
+        }
+
+        .idea-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .idea-card.excellent {
+            border-left-color: var(--accent-excellent);
+            background: linear-gradient(to right, rgba(255, 210, 63, 0.1), transparent);
+        }
+
+        .idea-card.good {
+            border-left-color: var(--accent-good);
+            background: linear-gradient(to right, rgba(6, 167, 125, 0.05), transparent);
+        }
+
+        .idea-card.normal {
+            border-left-color: var(--accent-normal);
+        }
+
+        .idea-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .idea-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .score-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .score {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.excellent {
+            background: var(--accent-excellent);
+            color: #333;
+        }
+
+        .badge.good {
+            background: var(--accent-good);
+            color: white;
+        }
+
+        .badge.normal {
+            background: var(--accent-normal);
+            color: white;
+        }
+
+        .idea-body p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .idea-body strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .idea-body ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .idea-body li {
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .score-breakdown {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .statistics {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+
+        .statistics h2 {
+            color: white;
+            border-left-color: white;
+            margin-top: 0;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ranking-item {
+            background: var(--card-bg);
+            padding: 16px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .ranking-rank {
+            font-size: 24px;
+            font-weight: 700;
+            width: 40px;
+            text-align: center;
+        }
+
+        .ranking-rank.gold { color: #FFD700; }
+        .ranking-rank.silver { color: #C0C0C0; }
+        .ranking-rank.bronze { color: #CD7F32; }
+
+        .ranking-info {
+            flex: 1;
+        }
+
+        .ranking-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .ranking-hotword {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .ranking-score {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .report-header { padding: 24px; }
+            .report-header h1 { font-size: 24px; }
+            .hotspot-list { grid-template-columns: 1fr; }
+            .idea-header { flex-direction: column; align-items: flex-start; }
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>🤖 微博热搜产品创意分析报告</h1>
+            <div class="meta-info">
+                <span>📅 生成日期：2026-01-24</span>
+                <span>🔥 热搜总数：7</span>
+                <span>💡 创意总数：22</span>
+                <span>⏰ 生成时间：2026-01-24 14:16:31</span>
+            </div>
+        </header>
+
+        <h2>📊 热搜TOP10概览</h2>
+        <div class="hotspot-list">
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">1</span>
+                    <span class="hotword">亚洲杯</span>
+                </div>
+                <div class="hotness">热度：1119528 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">2</span>
+                    <span class="hotword">两个消失的顶流歌手都回归了</span>
+                </div>
+                <div class="hotness">热度：综艺 788797 <span class="tag">热</span></div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">3</span>
+                    <span class="hotword">太空月季回来了</span>
+                </div>
+                <div class="hotness">热度：637923 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">4</span>
+                    <span class="hotword">Apple 新春限时优惠</span>
+                </div>
+                <div class="hotness">热度： <span class="tag">新</span></div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">5</span>
+                    <span class="hotword">平台已下架涉事娃娃菜商家商品</span>
+                </div>
+                <div class="hotness">热度：337281 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">6</span>
+                    <span class="hotword">何不同舟渡</span>
+                </div>
+                <div class="hotness">热度：剧集 311436 <span class="tag">官宣</span></div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">7</span>
+                    <span class="hotword">俄罗斯最新涉华表态</span>
+                </div>
+                <div class="hotness">热度：245420 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">8</span>
+                    <span class="hotword">用智搜看声鸣远扬冠军诞生夜</span>
+                </div>
+                <div class="hotness">热度： <span class="tag">新</span></div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">9</span>
+                    <span class="hotword">温瑞博男单夺冠</span>
+                </div>
+                <div class="hotness">热度：215959 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">10</span>
+                    <span class="hotword">TWS中文歌舞台</span>
+                </div>
+                <div class="hotness">热度：演出 196186 <span class="tag">新</span></div>
+            </div>
+
+        </div>
+
+        <h2>🔍 详细产品创意分析</h2>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">1</span>
+                <span class="hotword" style="font-size: 18px;">亚洲杯</span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>1,119,528</p>
+            <div class="product-ideas">
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">云端主教练 (Cloud Coach)</span>
+                        <div class="score-info">
+                            <span class="score">92分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>实时换人投票系统</li>
+                    <li>AI推演'如果刚才那样踢'的结果</li>
+                    <li>一键生成战术指导语音包</li>
+                    <li>球迷愤怒值热力图</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>20-45岁资深球迷，热衷于战术分析，喜欢在社交媒体发表'指点江山'言论的男性群体。</p>
+                        <p><strong>📝 产品描述：</strong>一款满足球迷'我行我上'心理的第二屏互动应用。通过实时投票决定战术和换人，AI即时模拟并展示如果按球迷意愿踢的比赛走向，让'键盘侠'更有据可依（或被打脸）。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 95分 × 80% + 有用度 80分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">毒奶反买助手 (Jinx Helper)</span>
+                        <div class="score-info">
+                            <span class="score">88分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>全网KOL预测反向指标</li>
+                    <li>好友'毒奶'属性鉴定</li>
+                    <li>玄学胜率计算器</li>
+                    <li>赛前做法/攒人品小游戏</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>18-35岁泛球迷及彩票玩家，喜欢玩梗，对胜负有强预测欲望但常被'爆冷'困扰的人群。</p>
+                        <p><strong>📝 产品描述：</strong>基于大数据的娱乐化预测工具。抓取著名'乌鸦嘴'解说和连败好友的预测，自动生成反向投注建议，将输球的沮丧转化为玩梗的快乐，解决'怎么买怎么输'的痛点。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 92分 × 80% + 有用度 72分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">赛博速效救心丸 (Cyber Heart Saver)</span>
+                        <div class="score-info">
+                            <span class="score">85分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>智能手表心率异常报警</li>
+                    <li>失球瞬间自动屏蔽画面并播放佛经</li>
+                    <li>一键生成'退钱'表情包</li>
+                    <li>同病相怜天台聊天室</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>25-50岁中国队或弱势球队死忠粉，情绪易激动，需要情感宣泄和心理安慰的中年群体。</p>
+                        <p><strong>📝 产品描述：</strong>结合穿戴设备的健康+社交应用。监测观赛心率，在心碎时刻提供物理（静音/黑屏）和心理（群嘲/互助）的双重急救，将看球的痛苦转化为黑色幽默的社交资本。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 90分 × 80% + 有用度 65分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">2</span>
+                <span class="hotword" style="font-size: 18px;">两个消失的顶流歌手都回归了 <span class="tag">热</span></span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>788,797</p>
+            <div class="product-ideas">
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">爷青回时光机</span>
+                        <div class="score-info">
+                            <span class="score">86分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>AR扫描老磁带/CD唤醒沉浸式MV</li>
+                    <li>生成'在那一年'的个人专属音乐日记</li>
+                    <li>AI模拟20年前的歌手给现在的你写信</li>
+                    <li>粉丝情感时光胶囊社区</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>25-40岁，经历过华语乐坛黄金年代，具有强烈怀旧情结的职场人士。</p>
+                        <p><strong>📝 产品描述：</strong>一款基于情感共鸣的怀旧体验APP。不仅播放回归歌手的经典金曲，更通过AI将用户的相册回忆与歌手的职业生涯时间轴重叠，生成专属的'青春回忆录'视频，极具社交传播属性。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 95分 × 80% + 有用度 50分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">失踪人口回归办</span>
+                        <div class="score-info">
+                            <span class="score">82分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>沉寂歌手活跃度热力图监控</li>
+                    <li>全网众筹'捞人'许愿池</li>
+                    <li>AI预测退圈歌手的'平行宇宙'新歌</li>
+                    <li>回归演唱会抢票预演小游戏</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>18-30岁，热衷吃瓜、饭圈文化活跃用户，以及期待冷门歌手回归的乐迷。</p>
+                        <p><strong>📝 产品描述：</strong>一个聚合全网信息的趣味追踪平台。用户可以为'消失'的艺人打榜呼唤回归，系统抓取全网蛛丝马迹分析回归概率，并利用AI技术生成'如果他没退圈会唱什么歌'的趣味内容。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 88分 × 80% + 有用度 58分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">跨时空二重唱</span>
+                        <div class="score-info">
+                            <span class="score">79分</span>
+                            <span class="badge good">良好</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>AI分离提取歌手年轻时的声线</li>
+                    <li>用户与20年前的顶流'同台'合唱</li>
+                    <li>声音年龄测试（你的声音像哪年的他）</li>
+                    <li>一键生成复古KTV包厢特效视频</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>20-35岁，K歌爱好者，短视频创作者，喜欢尝试新奇互动的音乐用户。</p>
+                        <p><strong>📝 产品描述：</strong>利用AIGC技术的音乐互动工具。它能提取回归歌手巅峰时期的声音模型，让用户能与'年轻版'的偶像进行跨越时空的合唱，并自动生成带有年代感的滤镜视频，满足炫耀心理。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 85分 × 80% + 有用度 55分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">3</span>
+                <span class="hotword" style="font-size: 18px;">太空月季回来了</span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>637,923</p>
+            <div class="product-ideas">
+
+                <div class="idea-card normal">
+                    <div class="idea-header">
+                        <span class="idea-name">「太空月季回来了」分析失败</span>
+                        <div class="score-info">
+                            <span class="score">0分</span>
+                            <span class="badge normal">普通</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>错误: API 调用失败 (HTTP 503): {"error":{"code":503,"message":"No capacity available for model gemini-3-pro-high on the server","status":"UNAVAILABLE","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"MODEL_CAPACITY_EXHAUSTED","domain":"cloudcode-pa.googleapis.com","metadata":{"model":"gemini-3-pro-high"}},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"29s"}]}}</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>无法生成</p>
+                        <p><strong>📝 产品描述：</strong>API 调用失败: API 调用失败 (HTTP 503): {"error":{"code":503,"message":"No capacity available for model gemini-3-pro-high on the server","status":"UNAVAILABLE","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"MODEL_CAPACITY_EXHAUSTED","domain":"cloudcode-pa.googleapis.com","metadata":{"model":"gemini-3-pro-high"}},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"29s"}]}}</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">4</span>
+                <span class="hotword" style="font-size: 18px;">Apple 新春限时优惠 <span class="tag">新</span></span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>0</p>
+            <div class="product-ideas">
+
+                <div class="idea-card normal">
+                    <div class="idea-header">
+                        <span class="idea-name">「Apple 新春限时优惠」分析失败</span>
+                        <div class="score-info">
+                            <span class="score">0分</span>
+                            <span class="badge normal">普通</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>错误: API 调用失败 (HTTP 503): {"error":{"code":503,"message":"No capacity available for model gemini-3-pro-high on the server","status":"UNAVAILABLE","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"MODEL_CAPACITY_EXHAUSTED","domain":"cloudcode-pa.googleapis.com","metadata":{"model":"gemini-3-pro-high"}},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"28s"}]}}</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>无法生成</p>
+                        <p><strong>📝 产品描述：</strong>API 调用失败: API 调用失败 (HTTP 503): {"error":{"code":503,"message":"No capacity available for model gemini-3-pro-high on the server","status":"UNAVAILABLE","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"MODEL_CAPACITY_EXHAUSTED","domain":"cloudcode-pa.googleapis.com","metadata":{"model":"gemini-3-pro-high"}},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"28s"}]}}</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">5</span>
+                <span class="hotword" style="font-size: 18px;">平台已下架涉事娃娃菜商家商品</span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>337,281</p>
+            <div class="product-ideas">
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">丑菜创造营</span>
+                        <div class="score-info">
+                            <span class="score">86分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>丑菜选美PK：用户上传长得丑但天然的蔬菜照片进行PK</li>
+                    <li>甲醛鉴定滤镜：AI分析蔬菜色泽过于鲜艳的“美颜”嫌疑</li>
+                    <li>原生态地图：众包标记售卖“丑菜”的良心农户和摊位</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>18-30岁注重食品安全但反感说教的Z世代，崇尚“反精致”生活的年轻人</p>
+                        <p><strong>📝 产品描述：</strong>一款反其道而行之的社交应用。针对“药水泡出漂亮菜”的痛点，通过举办“丑菜选美”活动，建立“越丑越光荣”的审美导向，帮助用户避开过度加工的“美颜蔬菜”，既好玩又能找到放心食材。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 90分 × 80% + 有用度 70分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">绝命摊主模拟器</span>
+                        <div class="score-info">
+                            <span class="score">82分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>黑科技调配：模拟使用防腐剂、保鲜剂让蔬菜“起死回生”的玩法</li>
+                    <li>监管躲避战：应对突击检查和消费者投诉的策略机制</li>
+                    <li>良心抉择：在“高利润毒菜”和“亏本良心菜”之间做道德抉择</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>20-35岁喜爱模拟经营游戏的玩家，对社会热点敏感的吃瓜群众</p>
+                        <p><strong>📝 产品描述：</strong>一款黑色幽默风格的模拟经营游戏。让用户扮演菜贩子，亲身体验为了利润使用“科技与狠活”的过程，通过讽刺性的游戏体验普及食品安全知识，让用户了解辨别“涉事商品”的底层逻辑。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 95分 × 80% + 有用度 30分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">朕的银针</span>
+                        <div class="score-info">
+                            <span class="score">77分</span>
+                            <span class="badge good">良好</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>圣旨通报：将官方下架通报转化为“圣旨”形式推送</li>
+                    <li>验毒扫描：扫描商品条码或拍照，以宫廷验毒特效展示风险指数</li>
+                    <li>冷宫清单：自动汇总全网被下架、被投诉的商家黑名单</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>25-45岁家庭主妇/煮夫，关注家庭饮食健康，喜欢国风趣味应用的人群</p>
+                        <p><strong>📝 产品描述：</strong>一款极具仪式感的食品安全预警工具。将枯燥的违规商家通报包装成“宫廷验毒”的趣味互动，当用户搜索到涉事商品时，APP会弹出“护驾”提示，既实用又缓解了食品安全焦虑带来的恐慌感。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 75分 × 80% + 有用度 85分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">6</span>
+                <span class="hotword" style="font-size: 18px;">何不同舟渡 <span class="tag">官宣</span></span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>311,436</p>
+            <div class="product-ideas">
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">何不同舟·Crush探测器</span>
+                        <div class="score-info">
+                            <span class="score">89分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>匿名“同舟”邀请函</li>
+                    <li>对方点击行为心理分析</li>
+                    <li>双向确认即刻破冰</li>
+                    <li>失败自动生成“古风挽尊”文案</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>18-28岁，处于暧昧期、暗恋中，想表白但害怕尴尬的Z世代用户</p>
+                        <p><strong>📝 产品描述：</strong>基于话题“何不同舟”的社交试探工具。用户向暗恋对象发送一张含蓄的“渡河”邀请卡，若对方点击“上船”则立刻匹配成功；若忽略，系统自动将其伪装成普通心理测试，化解表白尴尬。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 94分 × 80% + 有用度 68分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">赛博摆渡人</span>
+                        <div class="score-info">
+                            <span class="score">83分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>古风AI情感咨询</li>
+                    <li>把大白话翻译成含蓄诗词</li>
+                    <li>情感纠葛“剧情模拟”推演</li>
+                    <li>电子木鱼/抚琴解压模式</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>20-35岁，喜爱古风文化，面临情感困扰或职场焦虑，寻求情绪价值的人群</p>
+                        <p><strong>📝 产品描述：</strong>一款古风AI情感陪伴应用。针对话题中透出的宿命感，AI化身“摆渡人”，用诗意、哲理的语言为用户排解焦虑，或将用户想发给前任/老板的激烈言辞“翻译”成体面且高情商的古文。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 88分 × 80% + 有用度 65分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">同舟路书</span>
+                        <div class="score-info">
+                            <span class="score">76分</span>
+                            <span class="badge good">良好</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>多人行程自动融合</li>
+                    <li>分歧点“投壶”决议</li>
+                    <li>实时位置“连船”显示</li>
+                    <li>旅行账单自动平摊</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>22-40岁，热衷结伴旅行、户外徒步，但受困于行程统筹困难的驴友和情侣</p>
+                        <p><strong>📝 产品描述：</strong>借“同舟共济”之意解决多人出行痛点。当多位好友输入各自想去的地点，App利用算法规划出一条“所有人都满意”的“同舟路线”，并提供趣味化的决策工具解决旅途分歧。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 72分 × 80% + 有用度 90分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">7</span>
+                <span class="hotword" style="font-size: 18px;">俄罗斯最新涉华表态</span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>245,420</p>
+            <div class="product-ideas">
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">外交黑话粉碎机</span>
+                        <div class="score-info">
+                            <span class="score">88分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>AI解读：将官方外交辞令翻译成东北话或网络流行语</li>
+                    <li>表情包生成：一键生成普京或外交官的趣味反应表情包</li>
+                    <li>吃瓜指数：根据表态亲密度，预测油价、帝王蟹价格波动</li>
+                    <li>弹幕议事厅：用户可在新闻原文上发送实时吐槽弹幕</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>18-35岁关注时事、喜欢玩梗的大学生及职场青年</p>
+                        <p><strong>📝 产品描述：</strong>一款基于AI的趣味新闻解读工具。它不仅能把严肃的“涉华表态”翻译成通俗易懂的“老铁文学”，还能自动生成相关梗图，让看国际新闻像刷段子一样上头，满足用户社交分享欲。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 90分 × 80% + 有用度 80分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">战斗民族盲盒</span>
+                        <div class="score-info">
+                            <span class="score">82分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>热点掉落：每当有重大涉华表态，APP触发限时虚拟盲盒</li>
+                    <li>硬核好物：抽取俄罗斯特产优惠券（如紫皮糖、伏特加）</li>
+                    <li>AR养熊：在手机里领养一只虚拟棕熊，心情随国际局势变化</li>
+                    <li>冷知识图鉴：收集关于俄罗斯文化的趣味卡片</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>20-30岁喜欢猎奇、热衷盲盒玩法和异国文化的年轻人</p>
+                        <p><strong>📝 产品描述：</strong>将国际热点与盲盒玩法结合的互动应用。热搜热度越高，盲盒奖励越丰厚。通过游戏化体验，将枯燥的政治新闻转化为用户探索俄罗斯美食、特产和文化的契机。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 85分 × 80% + 有用度 70分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">熊口夺食指南</span>
+                        <div class="score-info">
+                            <span class="score">76分</span>
+                            <span class="badge good">良好</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>俄餐雷达：基于LBS推荐附近正宗硬核的俄罗斯餐厅</li>
+                    <li>贸易红利榜：实时更新因最新表态而降价的进口商品清单</li>
+                    <li>烈酒配对：根据新闻的“火药味”程度推荐不同浓度的伏特加</li>
+                    <li>探店挑战：发布“挑战吃完大列巴”等趣味任务</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>25-40岁的一二线城市吃货、海淘爱好者及精明消费者</p>
+                        <p><strong>📝 产品描述：</strong>一款连接宏观局势与微观消费的生活助手。它利用“涉华表态”带来的贸易利好信息，指导用户哪里能吃到最正宗的俄餐、买到最高性价比的进口货，实现“边看新闻边薅羊毛”。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 75分 × 80% + 有用度 80分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">8</span>
+                <span class="hotword" style="font-size: 18px;">用智搜看声鸣远扬冠军诞生夜 <span class="tag">新</span></span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>0</p>
+            <div class="product-ideas">
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">智搜百晓生</span>
+                        <div class="score-info">
+                            <span class="score">86分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>实时歌词彩蛋解析</li>
+                    <li>选手八卦关系图谱</li>
+                    <li>乐理知识AI即时科普</li>
+                    <li>自动捕捉名场面生成表情包</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>20-35岁综艺重度用户，求知欲强，喜欢在社交媒体讨论细节、不愿意错过任何“梗”的观众。</p>
+                        <p><strong>📝 产品描述：</strong>一款伴随式AI观影助手。利用智搜技术，实时识别直播中的音频和画面，自动推送选手背景、歌曲冷知识及隐秘八卦，解决直播时“看不懂梗”或“想搜来不及”的痛点。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 85分 × 80% + 有用度 90分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card excellent">
+                    <div class="idea-header">
+                        <span class="idea-name">冠军音浪盘</span>
+                        <div class="score-info">
+                            <span class="score">82分</span>
+                            <span class="badge excellent">优秀</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>夺冠概率实时AI计算</li>
+                    <li>全网搜索热度可视化PK</li>
+                    <li>虚拟积分竞猜</li>
+                    <li>粉丝声量弹幕对冲</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>18-25岁饭圈粉丝群体，热衷打榜、投票，追求强烈的参与感和胜负欲，希望影响比赛结果的用户。</p>
+                        <p><strong>📝 产品描述：</strong>基于搜索热度和社交声量的可视化预测平台。AI实时分析全网“智搜”数据，动态展示选手夺冠概率走势，让观众从被动观看转变为体验“操盘手”快感的互动游戏。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 92分 × 80% + 有用度 42分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">声鸣复刻机</span>
+                        <div class="score-info">
+                            <span class="score">76分</span>
+                            <span class="badge good">良好</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>冠军唱腔AI滤镜</li>
+                    <li>智能修音(模仿冠军风格)</li>
+                    <li>夺冠夜虚拟舞台合唱</li>
+                    <li>一键生成短视频战报</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>15-30岁音乐爱好者及短视频创作者，喜欢跟风翻唱，渴望在朋友圈展示自己歌喉的人群。</p>
+                        <p><strong>📝 产品描述：</strong>利用冠军诞生夜的热度，通过AI分析冠军的独特声纹和唱法，为用户提供“一键拥有冠军嗓音”的K歌工具，支持生成与冠军“隔空对唱”的短视频，极具传播性。</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 80分 × 80% + 有用度 60分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">9</span>
+                <span class="hotword" style="font-size: 18px;">温瑞博男单夺冠</span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>215,959</p>
+            <div class="product-ideas">
+
+                <div class="idea-card normal">
+                    <div class="idea-header">
+                        <span class="idea-name">「温瑞博男单夺冠」分析失败</span>
+                        <div class="score-info">
+                            <span class="score">0分</span>
+                            <span class="badge normal">普通</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>错误: API 调用失败 (HTTP 503): {"error":{"code":503,"message":"No capacity available for model gemini-3-pro-high on the server","status":"UNAVAILABLE","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"MODEL_CAPACITY_EXHAUSTED","domain":"cloudcode-pa.googleapis.com","metadata":{"model":"gemini-3-pro-high"}},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"29s"}]}}</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>无法生成</p>
+                        <p><strong>📝 产品描述：</strong>API 调用失败: API 调用失败 (HTTP 503): {"error":{"code":503,"message":"No capacity available for model gemini-3-pro-high on the server","status":"UNAVAILABLE","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"MODEL_CAPACITY_EXHAUSTED","domain":"cloudcode-pa.googleapis.com","metadata":{"model":"gemini-3-pro-high"}},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"29s"}]}}</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-title">
+                <span class="rank">10</span>
+                <span class="hotword" style="font-size: 18px;">TWS中文歌舞台 <span class="tag">新</span></span>
+            </div>
+            <p><strong>🔥 热度指数：</strong>196,186</p>
+            <div class="product-ideas">
+
+                <div class="idea-card normal">
+                    <div class="idea-header">
+                        <span class="idea-name">「TWS中文歌舞台」分析失败</span>
+                        <div class="score-info">
+                            <span class="score">0分</span>
+                            <span class="badge normal">普通</span>
+                        </div>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>💎 核心功能：</strong></p>
+                        <ul>
+                            <li>错误: API 调用失败 (HTTP 503): {"error":{"code":503,"message":"No capacity available for model gemini-3-pro-high on the server","status":"UNAVAILABLE","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"MODEL_CAPACITY_EXHAUSTED","domain":"cloudcode-pa.googleapis.com","metadata":{"model":"gemini-3-pro-high"}},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"28s"}]}}</li>
+                        </ul>
+                        <p><strong>👥 目标用户：</strong>无法生成</p>
+                        <p><strong>📝 产品描述：</strong>API 调用失败: API 调用失败 (HTTP 503): {"error":{"code":503,"message":"No capacity available for model gemini-3-pro-high on the server","status":"UNAVAILABLE","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"MODEL_CAPACITY_EXHAUSTED","domain":"cloudcode-pa.googleapis.com","metadata":{"model":"gemini-3-pro-high"}},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"28s"}]}}</p>
+                        <p class="score-breakdown">
+                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <h2>🏆 产品创意排行榜 (TOP20)</h2>
+        <div class="ranking-list">
+
+            <div class="ranking-item">
+                <span class="ranking-rank gold">#1</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">云端主教练 (Cloud Coach)</div>
+                    <div class="ranking-hotword">来源：亚洲杯</div>
+                </div>
+                <span class="ranking-score">92分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank silver">#2</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">何不同舟·Crush探测器</div>
+                    <div class="ranking-hotword">来源：何不同舟渡</div>
+                </div>
+                <span class="ranking-score">89分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank bronze">#3</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">毒奶反买助手 (Jinx Helper)</div>
+                    <div class="ranking-hotword">来源：亚洲杯</div>
+                </div>
+                <span class="ranking-score">88分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">4</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">外交黑话粉碎机</div>
+                    <div class="ranking-hotword">来源：俄罗斯最新涉华表态</div>
+                </div>
+                <span class="ranking-score">88分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">5</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">爷青回时光机</div>
+                    <div class="ranking-hotword">来源：两个消失的顶流歌手都回归了</div>
+                </div>
+                <span class="ranking-score">86分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">6</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">丑菜创造营</div>
+                    <div class="ranking-hotword">来源：平台已下架涉事娃娃菜商家商品</div>
+                </div>
+                <span class="ranking-score">86分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">7</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">智搜百晓生</div>
+                    <div class="ranking-hotword">来源：用智搜看声鸣远扬冠军诞生夜</div>
+                </div>
+                <span class="ranking-score">86分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">8</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">赛博速效救心丸 (Cyber Heart Saver)</div>
+                    <div class="ranking-hotword">来源：亚洲杯</div>
+                </div>
+                <span class="ranking-score">85分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">9</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">赛博摆渡人</div>
+                    <div class="ranking-hotword">来源：何不同舟渡</div>
+                </div>
+                <span class="ranking-score">83分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">10</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">失踪人口回归办</div>
+                    <div class="ranking-hotword">来源：两个消失的顶流歌手都回归了</div>
+                </div>
+                <span class="ranking-score">82分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">11</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">绝命摊主模拟器</div>
+                    <div class="ranking-hotword">来源：平台已下架涉事娃娃菜商家商品</div>
+                </div>
+                <span class="ranking-score">82分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">12</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">战斗民族盲盒</div>
+                    <div class="ranking-hotword">来源：俄罗斯最新涉华表态</div>
+                </div>
+                <span class="ranking-score">82分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">13</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">冠军音浪盘</div>
+                    <div class="ranking-hotword">来源：用智搜看声鸣远扬冠军诞生夜</div>
+                </div>
+                <span class="ranking-score">82分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">14</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">跨时空二重唱</div>
+                    <div class="ranking-hotword">来源：两个消失的顶流歌手都回归了</div>
+                </div>
+                <span class="ranking-score">79分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">15</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">朕的银针</div>
+                    <div class="ranking-hotword">来源：平台已下架涉事娃娃菜商家商品</div>
+                </div>
+                <span class="ranking-score">77分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">16</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">同舟路书</div>
+                    <div class="ranking-hotword">来源：何不同舟渡</div>
+                </div>
+                <span class="ranking-score">76分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">17</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">熊口夺食指南</div>
+                    <div class="ranking-hotword">来源：俄罗斯最新涉华表态</div>
+                </div>
+                <span class="ranking-score">76分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">18</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">声鸣复刻机</div>
+                    <div class="ranking-hotword">来源：用智搜看声鸣远扬冠军诞生夜</div>
+                </div>
+                <span class="ranking-score">76分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">19</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">「太空月季回来了」分析失败</div>
+                    <div class="ranking-hotword">来源：太空月季回来了</div>
+                </div>
+                <span class="ranking-score">0分</span>
+            </div>
+
+            <div class="ranking-item">
+                <span class="ranking-rank ">20</span>
+                <div class="ranking-info">
+                    <div class="ranking-name">「Apple 新春限时优惠」分析失败</div>
+                    <div class="ranking-hotword">来源：Apple 新春限时优惠</div>
+                </div>
+                <span class="ranking-score">0分</span>
+            </div>
+
+        </div>
+
+        <div class="statistics">
+            <h2>📈 数据统计</h2>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <span class="stat-value">22</span>
+                    <span class="stat-label">创意总数</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">13</span>
+                    <span class="stat-label">优秀创意 (&gt;80分)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">良好创意 (60-80分)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">83.1</span>
+                    <span class="stat-label">平均评分</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>🤖 本报告由 AI 自动生成 | 仅供参考</p>
+            <p>数据来源：天聚数行 API | AI 分析：Claude 3.5 Sonnet</p>
+            <p>生成时间：2026-01-24 14:16:31</p>
+        </footer>
+    </div>
+</body>
+</html>
