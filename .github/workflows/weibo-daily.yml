@@ -103,5 +103,5 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-name: ${{ secrets.VERCEL_PROJECT_NAME }}
-          vercel-args: '--prod'
+          vercel-args: '--prod --yes'
 
