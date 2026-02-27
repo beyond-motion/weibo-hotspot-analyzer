@@ -49,40 +49,33 @@ jobs:
         run: |
           python scripts/generate_html_report.py
 
-      - name: 验证报告已生成
+      - name: 验证报告并更新 latest
         run: |
-          echo "🔍 查找生成的报告文件..."
-          sync
-          ls -la reports/
-          find reports/ -name "*.html" -type f || find . -name "weibo_hotspot_report_*.html" -type f
-          REPORT_FILE=$(find reports/ -name "*.html" -type f 2>/dev/null | head -1)
-          if [ -z "$REPORT_FILE" ]; then
-            REPORT_FILE=$(find . -name "weibo_hotspot_report_*.html" -type f 2>/dev/null | head -1)
-          fi
-          if [ -n "$REPORT_FILE" ]; then
-            echo "✅ 找到报告: $REPORT_FILE"
-            cp "$REPORT_FILE" weibo_hotspot_report_latest.html
+          TODAY=$(date +%Y-%m-%d)
+          YEAR_MONTH=$(date +%Y/%m)
+          
+          echo "🔍 查找今天生成的报告文件..."
+          
+          # 精确查找 generate_html_report.py 生成的今日报告
+          # 格式: reports/YYYY/MM/YYYY-MM-DD_weibo_hotspot_report.html
+          REPORT_FILE="reports/${YEAR_MONTH}/${TODAY}_weibo_hotspot_report.html"
+          
+          if [ -f "$REPORT_FILE" ]; then
+            echo "✅ 找到今日报告: $REPORT_FILE"
+            echo "📄 报告标题:"
+            grep '<title>' "$REPORT_FILE" | head -1
           else
-            echo "❌ 未找到生成的报告文件"
-            echo "当前目录内容:"
-            ls -la
+            echo "❌ 未找到今日报告: $REPORT_FILE"
+            echo "📂 reports/${YEAR_MONTH}/ 目录内容:"
+            ls -la "reports/${YEAR_MONTH}/" 2>/dev/null || echo "目录不存在"
             exit 1
           fi
-
-      - name: 移动报告到输出目录
-        run: |
-          REPORT_FILE="weibo_hotspot_report_latest.html"
-          TIMESTAMP=$(date +%Y-%m-%d_%H%M%S)
-          YEAR_MONTH=$(date +%Y/%m)
-
-          mkdir -p "reports/${YEAR_MONTH}"
-
-          cp "$REPORT_FILE" "reports/${YEAR_MONTH}/${TIMESTAMP}_weibo_hotspot_report.html"
-          echo "✅ 报告已复制到: reports/${YEAR_MONTH}/${TIMESTAMP}_weibo_hotspot_report.html"
-
-          # 创建 latest 副本
+          
+          # 用今日报告更新 latest 副本
           cp "$REPORT_FILE" "reports/${YEAR_MONTH}/latest_weibo_hotspot_report.html"
-          echo "✅ 已创建 latest 副本"
+          echo "✅ 已更新 latest 副本"
+          echo "📄 latest 标题:"
+          grep '<title>' "reports/${YEAR_MONTH}/latest_weibo_hotspot_report.html" | head -1
 
       - name: 更新首页重定向
         run: |

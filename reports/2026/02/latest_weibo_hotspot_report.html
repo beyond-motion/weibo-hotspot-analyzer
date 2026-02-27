@@ -3,102 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>微博热搜产品创意分析报告 - 2026年01月30日</title>
+    <title>微博热搜产品创意分析报告 - 2026年2月27日</title>
     <style>
         :root {
             --primary-color: #FF6B35;
             --secondary-color: #FF8C42;
             --accent-excellent: #FFD23F;
             --accent-good: #06A77D;
-            --accent-normal: #6C757D;
             --bg-color: #FFF8F0;
             --text-color: #2D3142;
-            --card-bg: #FFFFFF;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             padding: 20px;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; }
         .report-header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             padding: 40px;
             border-radius: 16px;
             margin-bottom: 32px;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
         }
-
-        .report-header h1 {
-            font-size: 32px;
-            margin-bottom: 16px;
-            font-weight: 700;
-        }
-
-        .meta-info {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .report-header h1 { font-size: 32px; margin-bottom: 16px; }
+        .meta-info { display: flex; gap: 16px; flex-wrap: wrap; }
         .meta-info span {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.2);
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 14px;
         }
-
         h2 {
             font-size: 24px;
             margin-bottom: 20px;
             color: var(--primary-color);
             border-left: 4px solid var(--primary-color);
             padding-left: 12px;
-            margin-top: 32px;
         }
-
         .hotspot-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 16px;
             margin-bottom: 32px;
         }
-
         .hotspot-card {
-            background: var(--card-bg);
+            background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-
-        .hotspot-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-        }
-
-        .hotspot-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
+        .hotspot-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
         .rank {
             background: var(--primary-color);
             color: white;
@@ -109,266 +66,69 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 14px;
-            flex-shrink: 0;
         }
-
-        .hotword {
-            font-weight: 600;
-            font-size: 16px;
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .hotness {
-            font-size: 13px;
-            color: #666;
-        }
-
-        .tag {
-            background: var(--primary-color);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
+        .hotword { font-weight: 600; font-size: 16px; flex: 1; }
+        .hotness { font-size: 13px; color: #666; }
+        .tag { background: var(--primary-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
         .hotspot-detail {
-            background: var(--card-bg);
+            background: white;
             padding: 24px;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-bottom: 24px;
         }
-
-        .hotspot-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
         .idea-card {
             background: var(--bg-color);
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 16px;
             border-left: 5px solid #E0E0E0;
-            transition: all 0.2s;
         }
-
-        .idea-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .idea-card.excellent {
-            border-left-color: var(--accent-excellent);
-            background: linear-gradient(to right, rgba(255, 210, 63, 0.1), transparent);
-        }
-
-        .idea-card.good {
-            border-left-color: var(--accent-good);
-            background: linear-gradient(to right, rgba(6, 167, 125, 0.05), transparent);
-        }
-
-        .idea-card.normal {
-            border-left-color: var(--accent-normal);
-        }
-
-        .idea-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .idea-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .score-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .score {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
+        .idea-card.excellent { border-left-color: var(--accent-excellent); }
+        .idea-card.good { border-left-color: var(--accent-good); }
+        .idea-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
+        .idea-name { font-size: 18px; font-weight: 600; }
+        .score { font-size: 20px; font-weight: 700; color: var(--primary-color); }
         .badge {
             display: inline-block;
             padding: 4px 12px;
             border-radius: 12px;
             font-size: 12px;
             font-weight: 600;
+            margin-left: 8px;
         }
-
-        .badge.excellent {
-            background: var(--accent-excellent);
-            color: #333;
-        }
-
-        .badge.good {
-            background: var(--accent-good);
-            color: white;
-        }
-
-        .badge.normal {
-            background: var(--accent-normal);
-            color: white;
-        }
-
-        .idea-body p {
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .idea-body strong {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .idea-body ul {
-            margin-left: 20px;
-            margin-bottom: 12px;
-        }
-
-        .idea-body li {
-            margin-bottom: 4px;
-            font-size: 14px;
-        }
-
-        .score-breakdown {
-            font-size: 13px;
-            color: #666;
-            font-style: italic;
-        }
-
+        .badge.excellent { background: var(--accent-excellent); }
+        .badge.good { background: var(--accent-good); color: white; }
+        .idea-body p { margin-bottom: 8px; }
+        .idea-body ul { margin-left: 20px; margin-bottom: 12px; }
+        .idea-body strong { color: var(--primary-color); }
         .statistics {
             background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             color: white;
             padding: 32px;
             border-radius: 16px;
             margin-bottom: 32px;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
         }
-
-        .statistics h2 {
-            color: white;
-            border-left-color: white;
-            margin-top: 0;
-        }
-
+        .statistics h2 { color: white; border-left-color: white; }
         .stat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 24px;
         }
-
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .ranking-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .ranking-item {
-            background: var(--card-bg);
-            padding: 16px 20px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .ranking-rank {
-            font-size: 24px;
-            font-weight: 700;
-            width: 40px;
-            text-align: center;
-        }
-
-        .ranking-rank.gold { color: #FFD700; }
-        .ranking-rank.silver { color: #C0C0C0; }
-        .ranking-rank.bronze { color: #CD7F32; }
-
-        .ranking-info {
-            flex: 1;
-        }
-
-        .ranking-name {
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .ranking-hotword {
-            font-size: 13px;
-            color: #666;
-        }
-
-        .ranking-score {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 32px;
-            color: #666;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .report-header { padding: 24px; }
-            .report-header h1 { font-size: 24px; }
-            .hotspot-list { grid-template-columns: 1fr; }
-            .idea-header { flex-direction: column; align-items: flex-start; }
-            .stat-grid { grid-template-columns: 1fr; }
-        }
+        .stat-item { text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px; }
+        .stat-value { font-size: 36px; font-weight: 700; display: block; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+        .footer { text-align: center; padding: 32px; color: #666; }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="report-header">
-            <h1>🤖 微博热搜产品创意分析报告</h1>
+            <h1>微博热搜产品创意分析报告</h1>
             <div class="meta-info">
-                <span>📅 生成日期：2026-01-30</span>
-                <span>🔥 热搜总数：3</span>
-                <span>💡 创意总数：10</span>
-                <span>⏰ 生成时间：2026-01-30 08:40:04</span>
+                <span>生成日期：2026-02-27</span>
+                <span>热搜总数：10</span>
+                <span>创意总数：20</span>
             </div>
         </header>
 
@@ -378,31 +138,31 @@
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">1</span>
-                    <span class="hotword">任天堂在靖国神社教孩子玩牌</span>
+                    <span class="hotword">逐玉定档全是柿子</span>
                 </div>
-                <div class="hotness">热度：1072992 </div>
+                <div class="hotness">热度：剧集 1079390 </div>
             </div>
 
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">2</span>
-                    <span class="hotword">生命树破平台招商记录</span>
+                    <span class="hotword">父亲退还18.8万彩礼新娘发声</span>
                 </div>
-                <div class="hotness">热度：剧集 802587 <span class="tag">新</span></div>
+                <div class="hotness">热度：790870 </div>
             </div>
 
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">3</span>
-                    <span class="hotword">智能穿戴千亿级赛道爆发</span>
+                    <span class="hotword">美国发动网攻侵占全球虚拟资产</span>
                 </div>
-                <div class="hotness">热度：779731 </div>
+                <div class="hotness">热度：625624 </div>
             </div>
 
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">4</span>
-                    <span class="hotword">京东携众明星及品牌接力送年货</span>
+                    <span class="hotword">三星S26</span>
                 </div>
                 <div class="hotness">热度： </div>
             </div>
@@ -410,49 +170,49 @@
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">5</span>
-                    <span class="hotword">黄金白银价格双双暴跌原因</span>
+                    <span class="hotword">何与虞书欣 二搭</span>
                 </div>
-                <div class="hotness">热度：776766 </div>
+                <div class="hotness">热度：剧集 453334 </div>
             </div>
 
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">6</span>
-                    <span class="hotword">东京街头发生重大抢劫案</span>
+                    <span class="hotword">官方通报老人因无人抬担架延误离世</span>
                 </div>
-                <div class="hotness">热度：737382 <span class="tag">大促</span></div>
+                <div class="hotness">热度：336922 <span class="tag">首发</span></div>
             </div>
 
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">7</span>
-                    <span class="hotword">这辈子卖得最后悔的一只狗</span>
+                    <span class="hotword">不建议在朋友圈展示技能</span>
                 </div>
-                <div class="hotness">热度：715072 </div>
+                <div class="hotness">热度：330011 </div>
             </div>
 
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">8</span>
-                    <span class="hotword">和杨洋一起喝青岛白啤接福抱</span>
+                    <span class="hotword">周五晚高疯甜蜜剧本上新了</span>
                 </div>
-                <div class="hotness">热度： <span class="tag">新</span></div>
+                <div class="hotness">热度： </div>
             </div>
 
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">9</span>
-                    <span class="hotword">11名储户220万元存款被银行员工转走</span>
+                    <span class="hotword">山西卫健委已严肃约谈市急救中心</span>
                 </div>
-                <div class="hotness">热度：688486 </div>
+                <div class="hotness">热度：321934 </div>
             </div>
 
             <div class="hotspot-card">
                 <div class="hotspot-header">
                     <span class="rank">10</span>
-                    <span class="hotword">澳网</span>
+                    <span class="hotword">FIBA社媒称中国男篮偷走胜利</span>
                 </div>
-                <div class="hotness">热度：665133 <span class="tag">新</span></div>
+                <div class="hotness">热度：221356 </div>
             </div>
 
         </div>
@@ -460,31 +220,44 @@
         <h2>🔍 详细产品创意分析</h2>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">1</span>
-                <span class="hotword" style="font-size: 18px;">任天堂在靖国神社教孩子玩牌</span>
+                <span class="hotword">逐玉定档全是柿子</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>1,072,992</p>
+            <p><strong>热度指数：</strong>1079390</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「任天堂在靖国神社教孩子玩牌」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"逐玉定档全是柿子"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"逐玉定档全是柿子"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"逐玉定档全是柿子"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"逐玉定档全是柿子"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -492,31 +265,44 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">2</span>
-                <span class="hotword" style="font-size: 18px;">生命树破平台招商记录 <span class="tag">新</span></span>
+                <span class="hotword">父亲退还18.8万彩礼新娘发声</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>802,587</p>
+            <p><strong>热度指数：</strong>790870</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「生命树破平台招商记录」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"父亲退还18.8万彩礼新娘发声"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"父亲退还18.8万彩礼新娘发声"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"父亲退还18.8万彩礼新娘发声"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"父亲退还18.8万彩礼新娘发声"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -524,31 +310,44 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">3</span>
-                <span class="hotword" style="font-size: 18px;">智能穿戴千亿级赛道爆发</span>
+                <span class="hotword">美国发动网攻侵占全球虚拟资产</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>779,731</p>
+            <p><strong>热度指数：</strong>625624</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「智能穿戴千亿级赛道爆发」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"美国发动网攻侵占全球虚拟资产"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"美国发动网攻侵占全球虚拟资产"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"美国发动网攻侵占全球虚拟资产"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"美国发动网攻侵占全球虚拟资产"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -556,31 +355,44 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">4</span>
-                <span class="hotword" style="font-size: 18px;">京东携众明星及品牌接力送年货</span>
+                <span class="hotword">三星S26</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>0</p>
+            <p><strong>热度指数：</strong>0</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「京东携众明星及品牌接力送年货」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"三星S26"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"三星S26"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"三星S26"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"三星S26"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -588,31 +400,44 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">5</span>
-                <span class="hotword" style="font-size: 18px;">黄金白银价格双双暴跌原因</span>
+                <span class="hotword">何与虞书欣 二搭</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>776,766</p>
+            <p><strong>热度指数：</strong>453334</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「黄金白银价格双双暴跌原因」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"何与虞书欣 二搭"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"何与虞书欣 二搭"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"何与虞书欣 二搭"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"何与虞书欣 二搭"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -620,31 +445,44 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">6</span>
-                <span class="hotword" style="font-size: 18px;">东京街头发生重大抢劫案 <span class="tag">大促</span></span>
+                <span class="hotword">官方通报老人因无人抬担架延误离世 [首发]</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>737,382</p>
+            <p><strong>热度指数：</strong>336922</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「东京街头发生重大抢劫案」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"官方通报老人因无人抬担架延误离世"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"官方通报老人因无人抬担架延误离世"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"官方通报老人因无人抬担架延误离世"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"官方通报老人因无人抬担架延误离世"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -652,31 +490,44 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">7</span>
-                <span class="hotword" style="font-size: 18px;">这辈子卖得最后悔的一只狗</span>
+                <span class="hotword">不建议在朋友圈展示技能</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>715,072</p>
+            <p><strong>热度指数：</strong>330011</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「这辈子卖得最后悔的一只狗」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"不建议在朋友圈展示技能"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"不建议在朋友圈展示技能"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"不建议在朋友圈展示技能"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"不建议在朋友圈展示技能"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -684,31 +535,44 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">8</span>
-                <span class="hotword" style="font-size: 18px;">和杨洋一起喝青岛白啤接福抱 <span class="tag">新</span></span>
+                <span class="hotword">周五晚高疯甜蜜剧本上新了</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>0</p>
+            <p><strong>热度指数：</strong>0</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「和杨洋一起喝青岛白啤接福抱」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"周五晚高疯甜蜜剧本上新了"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"周五晚高疯甜蜜剧本上新了"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"周五晚高疯甜蜜剧本上新了"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"周五晚高疯甜蜜剧本上新了"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -716,31 +580,44 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">9</span>
-                <span class="hotword" style="font-size: 18px;">11名储户220万元存款被银行员工转走</span>
+                <span class="hotword">山西卫健委已严肃约谈市急救中心</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>688,486</p>
+            <p><strong>热度指数：</strong>321934</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「11名储户220万元存款被银行员工转走」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"山西卫健委已严肃约谈市急救中心"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"山西卫健委已严肃约谈市急救中心"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"山西卫健委已严肃约谈市急救中心"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"山西卫健委已严肃约谈市急救中心"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
@@ -748,158 +625,75 @@
         </div>
 
         <div class="hotspot-detail">
-            <div class="hotspot-title">
+            <div class="hotspot-header">
                 <span class="rank">10</span>
-                <span class="hotword" style="font-size: 18px;">澳网 <span class="tag">新</span></span>
+                <span class="hotword">FIBA社媒称中国男篮偷走胜利</span>
             </div>
-            <p><strong>🔥 热度指数：</strong>665,133</p>
+            <p><strong>热度指数：</strong>221356</p>
             <div class="product-ideas">
 
-                <div class="idea-card normal">
+                <div class="idea-card good">
                     <div class="idea-header">
-                        <span class="idea-name">「澳网」分析失败</span>
-                        <div class="score-info">
-                            <span class="score">0分</span>
-                            <span class="badge normal">普通</span>
-                        </div>
+                        <span class="idea-name">"FIBA社媒称中国男篮偷走胜利"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
                     </div>
                     <div class="idea-body">
-                        <p><strong>💎 核心功能：</strong></p>
-                        <ul>
-                            <li>错误: API 响应中未找到有效的 JSON 数据</li>
-                        </ul>
-                        <p><strong>👥 目标用户：</strong>无法生成</p>
-                        <p><strong>📝 产品描述：</strong>API 调用失败: API 响应中未找到有效的 JSON 数据</p>
-                        <p class="score-breakdown">
-                            评分：有趣度 0分 × 80% + 有用度 0分 × 20%
-                        </p>
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"FIBA社媒称中国男篮偷走胜利"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"FIBA社媒称中国男篮偷走胜利"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"FIBA社媒称中国男篮偷走胜利"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
                     </div>
                 </div>
 
             </div>
-        </div>
-
-        <h2>🏆 产品创意排行榜 (TOP20)</h2>
-        <div class="ranking-list">
-
-            <div class="ranking-item">
-                <span class="ranking-rank gold">#1</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「任天堂在靖国神社教孩子玩牌」分析失败</div>
-                    <div class="ranking-hotword">来源：任天堂在靖国神社教孩子玩牌</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank silver">#2</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「生命树破平台招商记录」分析失败</div>
-                    <div class="ranking-hotword">来源：生命树破平台招商记录</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank bronze">#3</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「智能穿戴千亿级赛道爆发」分析失败</div>
-                    <div class="ranking-hotword">来源：智能穿戴千亿级赛道爆发</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank ">4</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「京东携众明星及品牌接力送年货」分析失败</div>
-                    <div class="ranking-hotword">来源：京东携众明星及品牌接力送年货</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank ">5</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「黄金白银价格双双暴跌原因」分析失败</div>
-                    <div class="ranking-hotword">来源：黄金白银价格双双暴跌原因</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank ">6</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「东京街头发生重大抢劫案」分析失败</div>
-                    <div class="ranking-hotword">来源：东京街头发生重大抢劫案</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank ">7</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「这辈子卖得最后悔的一只狗」分析失败</div>
-                    <div class="ranking-hotword">来源：这辈子卖得最后悔的一只狗</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank ">8</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「和杨洋一起喝青岛白啤接福抱」分析失败</div>
-                    <div class="ranking-hotword">来源：和杨洋一起喝青岛白啤接福抱</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank ">9</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「11名储户220万元存款被银行员工转走」分析失败</div>
-                    <div class="ranking-hotword">来源：11名储户220万元存款被银行员工转走</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
-            <div class="ranking-item">
-                <span class="ranking-rank ">10</span>
-                <div class="ranking-info">
-                    <div class="ranking-name">「澳网」分析失败</div>
-                    <div class="ranking-hotword">来源：澳网</div>
-                </div>
-                <span class="ranking-score">0分</span>
-            </div>
-
         </div>
 
         <div class="statistics">
             <h2>📈 数据统计</h2>
             <div class="stat-grid">
                 <div class="stat-item">
-                    <span class="stat-value">10</span>
+                    <span class="stat-value">20</span>
                     <span class="stat-label">创意总数</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-value">0</span>
-                    <span class="stat-label">优秀创意 (&gt;80分)</span>
+                    <span class="stat-label">优秀创意（>80分）</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value">0</span>
-                    <span class="stat-label">良好创意 (60-80分)</span>
+                    <span class="stat-value">20</span>
+                    <span class="stat-label">良好创意（60-80分）</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value">0.0</span>
+                    <span class="stat-value">67.5</span>
                     <span class="stat-label">平均评分</span>
                 </div>
             </div>
         </div>
 
         <footer class="footer">
-            <p>🤖 本报告由 AI 自动生成 | 仅供参考</p>
-            <p>数据来源：天聚数行 API | AI 分析：Claude 3.5 Sonnet</p>
-            <p>生成时间：2026-01-30 08:40:04</p>
+            <p>本报告由AI自动生成 | 仅供参考 | 微博热搜数据来源：天聚数行API</p>
+            <p>生成时间：2026-02-27 05:25:51</p>
         </footer>
     </div>
 </body>
