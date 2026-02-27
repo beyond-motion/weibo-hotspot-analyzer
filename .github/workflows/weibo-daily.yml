@@ -86,16 +86,47 @@ jobs:
 
       - name: 更新首页重定向
         run: |
-          LATEST_PATH="/reports/$(date +%Y/%m)/latest_weibo_hotspot_report.html"
-          sed -i "s|/reports/[0-9]\{4\}/[0-9]\{2\}/latest_weibo_hotspot_report.html|$LATEST_PATH|g" index.html
+          YEAR_MONTH=$(date +%Y/%m)
+          LATEST_PATH="/reports/${YEAR_MONTH}/latest_weibo_hotspot_report.html"
+          
+          echo "🔄 更新 index.html 中的重定向路径..."
+          echo "原内容:"
+          grep 'meta http-equiv="refresh"' index.html || true
+          
+          # 使用更可靠的 sed 命令
+          sed -i.bak "s|url=/reports/[0-9]\{4\}/[0-9]\{2\}/latest_weibo_hotspot_report\.html|url=${LATEST_PATH}|g" index.html
+          sed -i.bak "s|href=\"/reports/[0-9]\{4\}/[0-9]\{2\}/latest_weibo_hotspot_report\.html\"|href=\"${LATEST_PATH}\"|g" index.html
+          sed -i.bak "s|window\.location\.href = '/reports/[0-9]\{4\}/[0-9]\{2\}/latest_weibo_hotspot_report\.html'|window.location.href = '${LATEST_PATH}'|g" index.html
+          
+          rm -f index.html.bak
+          
+          echo "新内容:"
+          grep 'meta http-equiv="refresh"' index.html || true
           echo "✅ 已更新 index.html 重定向到: $LATEST_PATH"
 
       - name: 提交报告
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add reports/ index.html
-          git diff --staged --quiet || git commit -m "🤖 自动生成微博热搜报告 $(date +%Y-%m-%d)"
+          
+          echo "📋 检查待提交的文件..."
+          git status
+          
+          # 明确添加所有需要提交的文件
+          git add reports/
+          git add index.html
+          
+          echo "📦 待提交的更改:"
+          git diff --staged --stat
+          
+          # 只有有更改时才提交
+          if ! git diff --staged --quiet; then
+            git commit -m "🤖 自动生成微博热搜报告 $(date +%Y-%m-%d)"
+            echo "✅ 提交成功"
+          else
+            echo "ℹ️ 没有需要提交的更改"
+          fi
+          
           # 推送到主分支触发 Vercel 部署
           git push origin main
 
