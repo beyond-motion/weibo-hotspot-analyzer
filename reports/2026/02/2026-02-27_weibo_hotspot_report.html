@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博热搜产品创意分析报告 - 2026年2月27日</title>
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #FF8C42;
+            --accent-excellent: #FFD23F;
+            --accent-good: #06A77D;
+            --bg-color: #FFF8F0;
+            --text-color: #2D3142;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .report-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+        .report-header h1 { font-size: 32px; margin-bottom: 16px; }
+        .meta-info { display: flex; gap: 16px; flex-wrap: wrap; }
+        .meta-info span {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+        }
+        .hotspot-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .hotspot-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .hotspot-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .rank {
+            background: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .hotword { font-weight: 600; font-size: 16px; flex: 1; }
+        .hotness { font-size: 13px; color: #666; }
+        .tag { background: var(--primary-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+        .hotspot-detail {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+        .idea-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border-left: 5px solid #E0E0E0;
+        }
+        .idea-card.excellent { border-left-color: var(--accent-excellent); }
+        .idea-card.good { border-left-color: var(--accent-good); }
+        .idea-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
+        .idea-name { font-size: 18px; font-weight: 600; }
+        .score { font-size: 20px; font-weight: 700; color: var(--primary-color); }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .badge.excellent { background: var(--accent-excellent); }
+        .badge.good { background: var(--accent-good); color: white; }
+        .idea-body p { margin-bottom: 8px; }
+        .idea-body ul { margin-left: 20px; margin-bottom: 12px; }
+        .idea-body strong { color: var(--primary-color); }
+        .statistics {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+        .statistics h2 { color: white; border-left-color: white; }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        .stat-item { text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px; }
+        .stat-value { font-size: 36px; font-weight: 700; display: block; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+        .footer { text-align: center; padding: 32px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>微博热搜产品创意分析报告</h1>
+            <div class="meta-info">
+                <span>生成日期：2026-02-27</span>
+                <span>热搜总数：10</span>
+                <span>创意总数：20</span>
+            </div>
+        </header>
+
+        <h2>📊 热搜TOP10概览</h2>
+        <div class="hotspot-list">
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">1</span>
+                    <span class="hotword">父亲退还18.8万彩礼新娘发声</span>
+                </div>
+                <div class="hotness">热度：1116098 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">2</span>
+                    <span class="hotword">逐玉定档</span>
+                </div>
+                <div class="hotness">热度：剧集 807875 <span class="tag">新</span></div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">3</span>
+                    <span class="hotword">美国发动网攻侵占全球虚拟资产</span>
+                </div>
+                <div class="hotness">热度：618754 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">4</span>
+                    <span class="hotword">何与虞书欣 二搭</span>
+                </div>
+                <div class="hotness">热度：剧集 385796 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">5</span>
+                    <span class="hotword">FIBA社媒称中国男篮偷走胜利</span>
+                </div>
+                <div class="hotness">热度：331394 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">6</span>
+                    <span class="hotword">不建议在朋友圈展示技能</span>
+                </div>
+                <div class="hotness">热度：328561 <span class="tag">新</span></div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">7</span>
+                    <span class="hotword">怪不得高启强不让他弟碰毒</span>
+                </div>
+                <div class="hotness">热度：剧集 325501 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">8</span>
+                    <span class="hotword">官方通报老人因无人抬担架延误离世</span>
+                </div>
+                <div class="hotness">热度：279178 <span class="tag">新</span></div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">9</span>
+                    <span class="hotword">魅族公告</span>
+                </div>
+                <div class="hotness">热度：276530 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">10</span>
+                    <span class="hotword">南京档案馆找到谷爱凌外婆户籍卡</span>
+                </div>
+                <div class="hotness">热度：259242 <span class="tag">新</span></div>
+            </div>
+
+        </div>
+
+        <h2>🔍 详细产品创意分析</h2>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">1</span>
+                <span class="hotword">父亲退还18.8万彩礼新娘发声</span>
+            </div>
+            <p><strong>热度指数：</strong>1116098</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"父亲退还18.8万彩礼新娘发声"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"父亲退还18.8万彩礼新娘发声"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"父亲退还18.8万彩礼新娘发声"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"父亲退还18.8万彩礼新娘发声"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">2</span>
+                <span class="hotword">逐玉定档 [新]</span>
+            </div>
+            <p><strong>热度指数：</strong>807875</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"逐玉定档"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"逐玉定档"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"逐玉定档"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"逐玉定档"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">3</span>
+                <span class="hotword">美国发动网攻侵占全球虚拟资产</span>
+            </div>
+            <p><strong>热度指数：</strong>618754</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"美国发动网攻侵占全球虚拟资产"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"美国发动网攻侵占全球虚拟资产"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"美国发动网攻侵占全球虚拟资产"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"美国发动网攻侵占全球虚拟资产"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">4</span>
+                <span class="hotword">何与虞书欣 二搭</span>
+            </div>
+            <p><strong>热度指数：</strong>385796</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"何与虞书欣 二搭"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"何与虞书欣 二搭"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"何与虞书欣 二搭"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"何与虞书欣 二搭"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">5</span>
+                <span class="hotword">FIBA社媒称中国男篮偷走胜利</span>
+            </div>
+            <p><strong>热度指数：</strong>331394</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"FIBA社媒称中国男篮偷走胜利"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"FIBA社媒称中国男篮偷走胜利"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"FIBA社媒称中国男篮偷走胜利"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"FIBA社媒称中国男篮偷走胜利"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">6</span>
+                <span class="hotword">不建议在朋友圈展示技能 [新]</span>
+            </div>
+            <p><strong>热度指数：</strong>328561</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"不建议在朋友圈展示技能"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"不建议在朋友圈展示技能"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"不建议在朋友圈展示技能"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"不建议在朋友圈展示技能"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">7</span>
+                <span class="hotword">怪不得高启强不让他弟碰毒</span>
+            </div>
+            <p><strong>热度指数：</strong>325501</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"怪不得高启强不让他弟碰毒"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"怪不得高启强不让他弟碰毒"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"怪不得高启强不让他弟碰毒"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"怪不得高启强不让他弟碰毒"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">8</span>
+                <span class="hotword">官方通报老人因无人抬担架延误离世 [新]</span>
+            </div>
+            <p><strong>热度指数：</strong>279178</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"官方通报老人因无人抬担架延误离世"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"官方通报老人因无人抬担架延误离世"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"官方通报老人因无人抬担架延误离世"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"官方通报老人因无人抬担架延误离世"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">9</span>
+                <span class="hotword">魅族公告</span>
+            </div>
+            <p><strong>热度指数：</strong>276530</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"魅族公告"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"魅族公告"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"魅族公告"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"魅族公告"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">10</span>
+                <span class="hotword">南京档案馆找到谷爱凌外婆户籍卡 [新]</span>
+            </div>
+            <p><strong>热度指数：</strong>259242</p>
+            <div class="product-ideas">
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"南京档案馆找到谷爱凌外婆户籍卡"内容创作助手</span>
+                        <span>
+                            <span class="score">70分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>热点素材库</li><li>创作灵感生成</li><li>多格式导出</li><li>一键发布</li></ul>
+                        <p><strong>目标用户：</strong>内容创作者、自媒体</p>
+                        <p><strong>产品描述：</strong>基于"南京档案馆找到谷爱凌外婆户籍卡"热点，为创作者提供相关素材和创作灵感，快速生成符合平台调性的内容。</p>
+                        <p><strong>评分：</strong>有趣度 72分 × 80% + 有用度 68分 × 20%</p>
+                    </div>
+                </div>
+
+                <div class="idea-card good">
+                    <div class="idea-header">
+                        <span class="idea-name">"南京档案馆找到谷爱凌外婆户籍卡"知识卡片</span>
+                        <span>
+                            <span class="score">65分</span>
+                            <span class="badge good">良好</span>
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>关键信息提炼</li><li>视觉化呈现</li><li>知识关联</li><li>收藏复习</li></ul>
+                        <p><strong>目标用户：</strong>学习型用户</p>
+                        <p><strong>产品描述：</strong>将"南京档案馆找到谷爱凌外婆户籍卡"相关的核心知识提炼成易读的卡片式内容，方便用户快速了解和分享。</p>
+                        <p><strong>评分：</strong>有趣度 68分 × 80% + 有用度 62分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="statistics">
+            <h2>📈 数据统计</h2>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <span class="stat-value">20</span>
+                    <span class="stat-label">创意总数</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">优秀创意（>80分）</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">20</span>
+                    <span class="stat-label">良好创意（60-80分）</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">67.5</span>
+                    <span class="stat-label">平均评分</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>本报告由AI自动生成 | 仅供参考 | 微博热搜数据来源：天聚数行API</p>
+            <p>生成时间：2026-02-27 04:22:43</p>
+        </footer>
+    </div>
+</body>
+</html>
