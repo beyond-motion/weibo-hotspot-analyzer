@@ -14,13 +14,13 @@ today = datetime.now()
 current_date_str = today.strftime('%Y-%m-%d')
 current_year_month = today.strftime('%Y/%m')
 
-# 查找最新的JSON文件
+# 查找最新的热搜数据文件
 json_files = glob.glob('weibo_hotspots_*.json')
 if not json_files:
     raise FileNotFoundError("未找到热搜数据文件 (weibo_hotspots_*.json)")
 
 latest_json = max(json_files, key=os.path.getmtime)
-print(f"[信息] 使用数据文件: {latest_json}")
+print(f"[信息] 使用热搜数据文件: {latest_json}")
 
 # 读取热搜数据
 with open(latest_json, 'r', encoding='utf-8') as f:
@@ -28,15 +28,45 @@ with open(latest_json, 'r', encoding='utf-8') as f:
 
 hotspots = hotspot_data['data'][:10]  # 取TOP10
 
+# ===== 新增：读取 Claude 生成的创意数据 =====
+ideas_data = None
+idea_files = glob.glob('weibo_ideas_*.json')
+if idea_files:
+    latest_ideas_file = max(idea_files, key=os.path.getmtime)
+    print(f"[信息] 使用创意数据文件: {latest_ideas_file}")
+    with open(latest_ideas_file, 'r', encoding='utf-8') as f:
+        ideas_data = json.load(f)
+    ideas_list = ideas_data.get('ideas', [])
+    # 按 hotword 建立映射
+    ideas_by_hotword = {}
+    for idea in ideas_list:
+        hw = idea.get('hotword', '')
+        if hw not in ideas_by_hotword:
+            ideas_by_hotword[hw] = []
+        ideas_by_hotword[hw].append(idea)
+    print(f"[信息] 已加载 {len(ideas_list)} 个创意")
+else:
+    ideas_by_hotword = {}
+    print("[警告] 未找到创意数据文件，将使用模板生成")
+
 # 为每个热搜生成产品创意
 def generate_ideas_for_hotspot(hotspot):
     hotword = hotspot['hotword']
     hotness = hotspot['hotword_num_int']
     tag = hotspot['hot_tag']
 
-    ideas = []
+    # ===== 优先使用 Claude 生成的创意 =====
+    if ideas_by_hotword and hotword in ideas_by_hotword and ideas_by_hotword[hotword]:
+        ideas = ideas_by_hotword[hotword]
+        # 清理掉之前添加的关联字段
+        for idea in ideas:
+            idea.pop('hotword', None)
+            idea.pop('hotness', None)
+            idea.pop('rank', None)
+            idea.pop('hotspot_summary', None)
+        return ideas
 
-    if '国考' in hotword:
+    # ===== 如果没有Claude数据，使用旧模板 =====
         ideas = [
             {
                 'name': '考公AI面试教练',
