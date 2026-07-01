@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博热搜产品创意分析报告 - 2026年7月1日</title>
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #FF8C42;
+            --accent-excellent: #FFD23F;
+            --accent-good: #06A77D;
+            --bg-color: #FFF8F0;
+            --text-color: #2D3142;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .report-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+        .report-header h1 { font-size: 32px; margin-bottom: 16px; }
+        .meta-info { display: flex; gap: 16px; flex-wrap: wrap; }
+        .meta-info span {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+        }
+        .hotspot-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .hotspot-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .hotspot-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .rank {
+            background: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .hotword { font-weight: 600; font-size: 16px; flex: 1; }
+        .hotness { font-size: 13px; color: #666; }
+        .tag { background: var(--primary-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+        .hotspot-detail {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+        .idea-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border-left: 5px solid #E0E0E0;
+        }
+        .idea-card.excellent { border-left-color: var(--accent-excellent); }
+        .idea-card.good { border-left-color: var(--accent-good); }
+        .idea-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
+        .idea-name { font-size: 18px; font-weight: 600; }
+        .score { font-size: 20px; font-weight: 700; color: var(--primary-color); }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .badge.excellent { background: var(--accent-excellent); }
+        .badge.good { background: var(--accent-good); color: white; }
+        .idea-body p { margin-bottom: 8px; }
+        .idea-body ul { margin-left: 20px; margin-bottom: 12px; }
+        .idea-body strong { color: var(--primary-color); }
+        .statistics {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+        .statistics h2 { color: white; border-left-color: white; }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        .stat-item { text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px; }
+        .stat-value { font-size: 36px; font-weight: 700; display: block; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+        .footer { text-align: center; padding: 32px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>微博热搜产品创意分析报告</h1>
+            <div class="meta-info">
+                <span>生成日期：2026-07-01</span>
+                <span>热搜总数：10</span>
+                <span>创意总数：10</span>
+            </div>
+        </header>
+
+        <h2>📊 热搜TOP10概览</h2>
+        <div class="hotspot-list">
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">1</span>
+                    <span class="hotword">欧洲人自豪举报20户邻居用空调</span>
+                </div>
+                <div class="hotness">热度：1234049 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">2</span>
+                    <span class="hotword">泰山疑被135公里刀片铁丝网围住</span>
+                </div>
+                <div class="hotness">热度：1134298 <span class="tag">新</span></div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">3</span>
+                    <span class="hotword">这是10128.6万分之一的回答</span>
+                </div>
+                <div class="hotness">热度：974827 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">4</span>
+                    <span class="hotword">hr问我为什么有两个毕业证</span>
+                </div>
+                <div class="hotness">热度：970339 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">5</span>
+                    <span class="hotword">坐飞机不要把头靠在窗户上</span>
+                </div>
+                <div class="hotness">热度：861430 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">6</span>
+                    <span class="hotword">厄瓜多尔捂嘴红牌</span>
+                </div>
+                <div class="hotness">热度：783594 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">7</span>
+                    <span class="hotword">农业造谣者端起碗吃饭放下筷砸锅</span>
+                </div>
+                <div class="hotness">热度： </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">8</span>
+                    <span class="hotword">机器人伴侣价格11.98万至99万</span>
+                </div>
+                <div class="hotness">热度：756331 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">9</span>
+                    <span class="hotword">现在就出发4 金晨</span>
+                </div>
+                <div class="hotness">热度：综艺 406573 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">10</span>
+                    <span class="hotword">中国造海上巨无霸又上新了</span>
+                </div>
+                <div class="hotness">热度：393335 <span class="tag">新</span></div>
+            </div>
+
+        </div>
+
+        <h2>🔍 详细产品创意分析</h2>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">1</span>
+                <span class="hotword">欧洲人自豪举报20户邻居用空调</span>
+            </div>
+            <p><strong>热度指数：</strong>1234049</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「欧洲人自豪举报20户邻居用空调」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">2</span>
+                <span class="hotword">泰山疑被135公里刀片铁丝网围住 [新]</span>
+            </div>
+            <p><strong>热度指数：</strong>1134298</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「泰山疑被135公里刀片铁丝网围住」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">3</span>
+                <span class="hotword">这是10128.6万分之一的回答</span>
+            </div>
+            <p><strong>热度指数：</strong>974827</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「这是10128.6万分之一的回答」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">4</span>
+                <span class="hotword">hr问我为什么有两个毕业证</span>
+            </div>
+            <p><strong>热度指数：</strong>970339</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「hr问我为什么有两个毕业证」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">5</span>
+                <span class="hotword">坐飞机不要把头靠在窗户上</span>
+            </div>
+            <p><strong>热度指数：</strong>861430</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「坐飞机不要把头靠在窗户上」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">6</span>
+                <span class="hotword">厄瓜多尔捂嘴红牌</span>
+            </div>
+            <p><strong>热度指数：</strong>783594</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「厄瓜多尔捂嘴红牌」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">7</span>
+                <span class="hotword">农业造谣者端起碗吃饭放下筷砸锅</span>
+            </div>
+            <p><strong>热度指数：</strong>0</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「农业造谣者端起碗吃饭放下筷砸锅」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">8</span>
+                <span class="hotword">机器人伴侣价格11.98万至99万</span>
+            </div>
+            <p><strong>热度指数：</strong>756331</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「机器人伴侣价格11.98万至99万」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">9</span>
+                <span class="hotword">现在就出发4 金晨</span>
+            </div>
+            <p><strong>热度指数：</strong>406573</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「现在就出发4 金晨」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">10</span>
+                <span class="hotword">中国造海上巨无霸又上新了 [新]</span>
+            </div>
+            <p><strong>热度指数：</strong>393335</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「中国造海上巨无霸又上新了」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 400): {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="statistics">
+            <h2>📈 数据统计</h2>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <span class="stat-value">10</span>
+                    <span class="stat-label">创意总数</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">优秀创意（>80分）</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">良好创意（60-80分）</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0.0</span>
+                    <span class="stat-label">平均评分</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>本报告由AI自动生成 | 仅供参考 | 微博热搜数据来源：天聚数行API</p>
+            <p>生成时间：2026-07-01 06:16:37</p>
+        </footer>
+    </div>
+</body>
+</html>
