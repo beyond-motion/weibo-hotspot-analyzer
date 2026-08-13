@@ -36,12 +36,20 @@ jobs:
         run: |
           python scripts/fetch_weibo_hot.py
 
-      - name: Claude AI 分析创意
+      - name: AI 分析创意
         env:
-          API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
+          # ── 当前：newapi.cpolar.top → DeepSeek（2026-08-13 切换）──
+          API_ENDPOINT: https://newapi.cpolar.top/v1/chat/completions
           API_KEY: ${{ secrets.API_KEY }}
-          API_MODEL: ${{ secrets.API_MODEL }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          API_MODEL: deepseek-v4-flash
+
+          # ── 旧配置：gcli2api.cpolar.top → Google Gemini（已停用，保留备查）──
+          # API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
+          #   旧值: https://gcli2api.cpolar.top/antigravity/v1/chat/completions
+          # API_MODEL: ${{ secrets.API_MODEL }}
+          #   旧值: Gemini 模型（通过 NAS Docker gcli2api 容器）
+          # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          #   未使用（空值）
         run: |
           python scripts/claude_analysis.py
 
