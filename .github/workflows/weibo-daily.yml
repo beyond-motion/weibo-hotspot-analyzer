@@ -61,12 +61,14 @@ jobs:
         run: |
           TODAY=$(date +%Y-%m-%d)
           YEAR_MONTH=$(date +%Y/%m)
+          # 时间段：北京时间 10:00 (UTC 02) → am，22:00 (UTC 14) → pm
+          PERIOD=$(date -u +%H | awk '$1<12{print "am"} $1>=12{print "pm"}')
           
           echo "🔍 查找今天生成的报告文件..."
           
           # 精确查找 generate_html_report.py 生成的今日报告
-          # 格式: reports/YYYY/MM/YYYY-MM-DD_weibo_hotspot_report.html
-          REPORT_FILE="reports/${YEAR_MONTH}/${TODAY}_weibo_hotspot_report.html"
+          # 格式: reports/YYYY/MM/YYYY-MM-DD_{am|pm}_weibo_hotspot_report.html
+          REPORT_FILE="reports/${YEAR_MONTH}/${TODAY}_${PERIOD}_weibo_hotspot_report.html"
           
           if [ -f "$REPORT_FILE" ]; then
             echo "✅ 找到今日报告: $REPORT_FILE"

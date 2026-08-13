@@ -503,8 +503,11 @@ else:
 
 os.makedirs(output_dir, exist_ok=True)
 
-# 保存文件（使用当前日期）
-output_file = f'{output_dir}/{current_date_str}_weibo_hotspot_report.html'
+# 保存文件（使用当前日期 + 时间段，am/pm 区分同一天两次运行）
+# 每天执行两次：北京时间 10:00 (UTC 02:00) → am，22:00 (UTC 14:00) → pm
+from datetime import datetime as _dt
+_period = 'am' if _dt.now().hour < 12 else 'pm'
+output_file = f'{output_dir}/{current_date_str}_{_period}_weibo_hotspot_report.html'
 with open(output_file, 'w', encoding='utf-8') as f:
     f.write(html)
 
