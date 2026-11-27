@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博热搜产品创意分析报告 - 2026年11月27日</title>
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #FF8C42;
+            --accent-excellent: #FFD23F;
+            --accent-good: #06A77D;
+            --bg-color: #FFF8F0;
+            --text-color: #2D3142;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .report-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+        .report-header h1 { font-size: 32px; margin-bottom: 16px; }
+        .meta-info { display: flex; gap: 16px; flex-wrap: wrap; }
+        .meta-info span {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+        }
+        .hotspot-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .hotspot-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .hotspot-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .rank {
+            background: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .hotword { font-weight: 600; font-size: 16px; flex: 1; }
+        .hotness { font-size: 13px; color: #666; }
+        .tag { background: var(--primary-color); color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+        .hotspot-detail {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+        .idea-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border-left: 5px solid #E0E0E0;
+        }
+        .idea-card.excellent { border-left-color: var(--accent-excellent); }
+        .idea-card.good { border-left-color: var(--accent-good); }
+        .idea-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
+        .idea-name { font-size: 18px; font-weight: 600; }
+        .score { font-size: 20px; font-weight: 700; color: var(--primary-color); }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .badge.excellent { background: var(--accent-excellent); }
+        .badge.good { background: var(--accent-good); color: white; }
+        .idea-body p { margin-bottom: 8px; }
+        .idea-body ul { margin-left: 20px; margin-bottom: 12px; }
+        .idea-body strong { color: var(--primary-color); }
+        .statistics {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+        }
+        .statistics h2 { color: white; border-left-color: white; }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        .stat-item { text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px; }
+        .stat-value { font-size: 36px; font-weight: 700; display: block; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+        .footer { text-align: center; padding: 32px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>微博热搜产品创意分析报告</h1>
+            <div class="meta-info">
+                <span>生成日期：2026-11-27</span>
+                <span>热搜总数：10</span>
+                <span>创意总数：10</span>
+            </div>
+        </header>
+
+        <h2>📊 热搜TOP10概览</h2>
+        <div class="hotspot-list">
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">1</span>
+                    <span class="hotword">董明珠现场发火魏建军解围</span>
+                </div>
+                <div class="hotness">热度：415111 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">2</span>
+                    <span class="hotword">后会友期第三次飞行嘉宾阵容</span>
+                </div>
+                <div class="hotness">热度：综艺 295608 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">3</span>
+                    <span class="hotword">180秒回顾神24发射任务</span>
+                </div>
+                <div class="hotness">热度：234227 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">4</span>
+                    <span class="hotword">千万不要用纸巾包贵重物品</span>
+                </div>
+                <div class="hotness">热度：85975 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">5</span>
+                    <span class="hotword">见到真正的非暴力沟通了</span>
+                </div>
+                <div class="hotness">热度：72567 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">6</span>
+                    <span class="hotword">厉娜前经纪人张阿瞳发文</span>
+                </div>
+                <div class="hotness">热度：63944 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">7</span>
+                    <span class="hotword">纵横新派越野标配华为乾崑技术</span>
+                </div>
+                <div class="hotness">热度： </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">8</span>
+                    <span class="hotword">马天宇 我都40了肯定有过亲密关系啊</span>
+                </div>
+                <div class="hotness">热度：62379 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">9</span>
+                    <span class="hotword">秦牛正威回应订婚再退婚</span>
+                </div>
+                <div class="hotness">热度：59269 </div>
+            </div>
+
+            <div class="hotspot-card">
+                <div class="hotspot-header">
+                    <span class="rank">10</span>
+                    <span class="hotword">多平台已下架纸质短剧</span>
+                </div>
+                <div class="hotness">热度：54613 <span class="tag">热</span></div>
+            </div>
+
+        </div>
+
+        <h2>🔍 详细产品创意分析</h2>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">1</span>
+                <span class="hotword">董明珠现场发火魏建军解围</span>
+            </div>
+            <p><strong>热度指数：</strong>415111</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「董明珠现场发火魏建军解围」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229292243699008268d9d6Y1dQxScb)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229292243699008268d9d6Y1dQxScb)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">2</span>
+                <span class="hotword">后会友期第三次飞行嘉宾阵容</span>
+            </div>
+            <p><strong>热度指数：</strong>295608</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「后会友期第三次飞行嘉宾阵容」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229301322872008268d9d6x7e4KCyz)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229301322872008268d9d6x7e4KCyz)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">3</span>
+                <span class="hotword">180秒回顾神24发射任务</span>
+            </div>
+            <p><strong>热度指数：</strong>234227</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「180秒回顾神24发射任务」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229309894352008268d9d6rUEmKd4u)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229309894352008268d9d6rUEmKd4u)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">4</span>
+                <span class="hotword">千万不要用纸巾包贵重物品</span>
+            </div>
+            <p><strong>热度指数：</strong>85975</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「千万不要用纸巾包贵重物品」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229319047474008268d9d6ZCd47rpg)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229319047474008268d9d6ZCd47rpg)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">5</span>
+                <span class="hotword">见到真正的非暴力沟通了</span>
+            </div>
+            <p><strong>热度指数：</strong>72567</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「见到真正的非暴力沟通了」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229328572620008268d9d6dlBMAwuH)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229328572620008268d9d6dlBMAwuH)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">6</span>
+                <span class="hotword">厉娜前经纪人张阿瞳发文</span>
+            </div>
+            <p><strong>热度指数：</strong>63944</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「厉娜前经纪人张阿瞳发文」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229337291342008268d9d6hmnFkERB)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229337291342008268d9d6hmnFkERB)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">7</span>
+                <span class="hotword">纵横新派越野标配华为乾崑技术</span>
+            </div>
+            <p><strong>热度指数：</strong>0</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「纵横新派越野标配华为乾崑技术」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229345993359008268d9d600VgaWkJ)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229345993359008268d9d600VgaWkJ)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">8</span>
+                <span class="hotword">马天宇 我都40了肯定有过亲密关系啊</span>
+            </div>
+            <p><strong>热度指数：</strong>62379</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「马天宇 我都40了肯定有过亲密关系啊」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229354424073008268d9d6jdwcSrAk)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229354424073008268d9d6jdwcSrAk)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">9</span>
+                <span class="hotword">秦牛正威回应订婚再退婚</span>
+            </div>
+            <p><strong>热度指数：</strong>59269</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「秦牛正威回应订婚再退婚」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229363201816008268d9d6qegzT99G)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229363201816008268d9d6qegzT99G)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hotspot-detail">
+            <div class="hotspot-header">
+                <span class="rank">10</span>
+                <span class="hotword">多平台已下架纸质短剧 [热]</span>
+            </div>
+            <p><strong>热度指数：</strong>54613</p>
+            <div class="product-ideas">
+
+                <div class="idea-card ">
+                    <div class="idea-header">
+                        <span class="idea-name">「多平台已下架纸质短剧」分析失败</span>
+                        <span>
+                            <span class="score">0分</span>
+                            
+                        </span>
+                    </div>
+                    <div class="idea-body">
+                        <p><strong>核心功能：</strong></p>
+                        <ul><li>错误: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229371906809008268d9d6v4df0Pi0)","type":"new_api_error"}}</li></ul>
+                        <p><strong>目标用户：</strong>无法生成</p>
+                        <p><strong>产品描述：</strong>API 调用失败: API 调用失败 (HTTP 401): {"error":{"code":"","message":"Invalid token (request id: 202611272229371906809008268d9d6v4df0Pi0)","type":"new_api_error"}}</p>
+                        <p><strong>评分：</strong>有趣度 0分 × 80% + 有用度 0分 × 20%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="statistics">
+            <h2>📈 数据统计</h2>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <span class="stat-value">10</span>
+                    <span class="stat-label">创意总数</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">优秀创意（>80分）</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0</span>
+                    <span class="stat-label">良好创意（60-80分）</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">0.0</span>
+                    <span class="stat-label">平均评分</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>本报告由AI自动生成 | 仅供参考 | 微博热搜数据来源：天聚数行API</p>
+            <p>生成时间：2026-11-27 22:29:37</p>
+        </footer>
+    </div>
+</body>
+</html>
